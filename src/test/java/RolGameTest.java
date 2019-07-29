@@ -12,7 +12,14 @@ public class RolGameTest {
     @Test
     public void aHeroTypeIsWarrior(){
         RolGame game = new RolGame();
-        Assert.assertEquals(true, game.getHero("warrior") instanceof Object);
-        Assert.assertEquals("Warrior", game.getHero("warrior").getType());
+        Assert.assertEquals(true, game.getHero("Warrior") instanceof Object);
+        Assert.assertEquals("Warrior", game.getHero("Warrior").getType());
+    }
+
+    @Test
+    public void aHeroTypeIsWizard(){
+        RolGame game = new RolGame();
+        Assert.assertEquals(true, game.getHero("Wizard") instanceof Object);
+        Assert.assertEquals("Wizard", game.getHero("Wizard").getType());
     }
 }

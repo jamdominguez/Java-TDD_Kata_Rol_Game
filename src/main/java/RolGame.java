@@ -3,7 +3,7 @@ public class RolGame {
         return new Object[2];
     }
 
-    public Hero getHero(String warrior) {
-        return new Hero();
+    public Hero getHero(String heroType) {
+        return new Hero(heroType);
     }
 }
