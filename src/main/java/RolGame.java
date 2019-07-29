@@ -1,9 +1,20 @@
+import java.util.HashMap;
+import java.util.Map;
+
 public class RolGame {
-    public Object[] getHeroes() {
-        return new Object[2];
+    private static Map<String,Hero> heroes;
+
+    static {
+        heroes = new HashMap<String, Hero>();
+        heroes.put("Warrior",new Hero("Warrior"));
+        heroes.put("Wizard",new Hero("Wizard"));
+    }
+
+    public Map<String,Hero> getHeroes() {
+        return heroes;
     }
 
     public Hero getHero(String heroType) {
-        return new Hero(heroType);
+        return heroes.get(heroType);
     }
 }
