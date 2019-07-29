@@ -25,7 +25,7 @@ In this example I will develop a simple application using TDD. Imagine you take 
 ___
 Into a rol game is necessary a combat system, for build this system take the next requirements:
 
-## Phase 1 (1 vs 1) - (Functional TDD)
+## Functional TDD - Phase 1 (1 vs 1)
  * The player only can use 2 heroes type: Warrior or Wizard. When the game start the player must chosse one of them.
  * In this phase only exist 1 enemy type: Orc
  * Hero and enemy has the same attributes: life, mana, power, spellpower, armor, spellarmor but different values.
