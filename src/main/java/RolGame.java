@@ -1,4 +1,5 @@
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class RolGame {
@@ -36,5 +37,9 @@ public class RolGame {
 
     public void addPlayer(String id) {
         this.player = new Player(id);
+    }
+
+    public List<Hero> getPlayerHeroes() {
+        return this.player.getHeroes();
     }
 }

@@ -1,8 +1,6 @@
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.Map;
-
 public class RolGameTest {
 
     @Test
@@ -32,6 +30,39 @@ public class RolGameTest {
     }
 
     @Test
+    public void RQ2_playerSelectOneHero(){
+        RolGame game = new RolGame();
+        //Add a player
+        game.addPlayer("Player1");
+        //When start no heroes assigned to the player
+        Assert.assertEquals(0, game.getPlayerHeroes().size());
+        //Player select the Warrior Hero
+        game.getPlayer().select("Warrior");
+        Assert.assertEquals(1, game.getPlayerHeroes().size());
+        Assert.assertEquals("Warrior", game.getPlayerHeroes().get(0).getType());
+        //Player select the Wizard Hero (only 1, the Warrior is removed, the Wizard is added)
+        game.getPlayer().select("Wizard");
+        Assert.assertEquals(1, game.getPlayerHeroes().size());
+        Assert.assertEquals("Wizard", game.getPlayerHeroes().get(0).getType());
+    }
+
+    @Test
+    public void RQ2_resetHeroSelection(){
+        RolGame game = new RolGame();
+        //Add a player
+        game.addPlayer("Player1");
+        //When start no heroes assigned to the player
+        Assert.assertEquals(0, game.getPlayerHeroes().size());
+        //Player select the Warrior Hero
+        game.getPlayer().select("Warrior");
+        Assert.assertEquals(1, game.getPlayerHeroes().size());
+        Assert.assertEquals("Warrior", game.getPlayerHeroes().get(0).getType());
+        //Remove selection
+        game.getPlayer().resetHeroSelection();
+        Assert.assertEquals(0, game.getPlayerHeroes().size());
+    }
+
+    @Test
     public void RQ3_oneEnemyInGame() {
         Assert.assertEquals(1, RolGame.getEnemies().size());
     }
@@ -41,10 +72,4 @@ public class RolGameTest {
         Assert.assertEquals(true, RolGame.getEnemy("Orc") instanceof Enemy);
         Assert.assertEquals("Orc", RolGame.getEnemy("Orc").getType());
     }
-
-/*    @Test
-    public void playerSelectOneHero(){
-        RolGame game = new RolGame();
-        Assert.assertArrayEquals(0, game.getPlayerHeroes());
-    }*/
 }

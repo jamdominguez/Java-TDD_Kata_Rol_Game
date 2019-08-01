@@ -1,11 +1,29 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Player {
     private String id;
+    private List<Hero> heroes;
 
     public Player(String id) {
+        this.heroes = new ArrayList<Hero>();
         this.id = id;
     }
 
     public String getId() {
         return this.id;
+    }
+
+    public List<Hero> getHeroes() {
+        return this.heroes;
+    }
+
+    public void select(String heroType) {
+        if (this.heroes.size() != 0) this.heroes.clear();
+        this.heroes.add(new Hero(heroType));
+    }
+
+    public void resetHeroSelection() {
+        this.heroes = new ArrayList<Hero>();
     }
 }
