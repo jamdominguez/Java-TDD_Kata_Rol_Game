@@ -22,10 +22,18 @@ public class RolGameTest {
         Assert.assertEquals("Wizard", RolGame.getHero("Wizard").getType());
     }
 
+    @Test
+    public void gameHasAPlayer(){
+        RolGame game = new RolGame();
+        Assert.assertEquals(null, game.getPlayer());
+        game.addPlayer("ZoroHD");
+        Assert.assertEquals(true, game.getPlayer() instanceof Player);
+        Assert.assertEquals("ZoroHD", game.getPlayer().getId());
+    }
+
 /*    @Test
     public void playerSelectOneHero(){
         RolGame game = new RolGame();
         Assert.assertArrayEquals(0, game.getPlayerHeroes());
-
     }*/
 }
