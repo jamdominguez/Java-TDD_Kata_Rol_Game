@@ -10,11 +10,11 @@ public class RolGame {
         heroes.put("Wizard",new Hero("Wizard"));
     }
 
-    public Map<String,Hero> getHeroes() {
+    public static Map<String,Hero> getHeroes() {
         return heroes;
     }
 
-    public Hero getHero(String heroType) {
+    public static Hero getHero(String heroType) {
         return heroes.get(heroType);
     }
 }

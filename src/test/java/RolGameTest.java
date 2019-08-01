@@ -6,27 +6,26 @@ import java.util.Map;
 public class RolGameTest {
 
     @Test
-    public void twoHeroesToChose(){
-        RolGame game = new RolGame();
-        Assert.assertEquals(2, game.getHeroes().size());
+    public void twoHeroesToChose() {
+        Assert.assertEquals(2, RolGame.getHeroes().size());
     }
 
     @Test
-    public void aHeroTypeIsWarrior(){
-        RolGame game = new RolGame();
-        Assert.assertEquals(true, game.getHero("Warrior") instanceof Hero);
-        Assert.assertEquals("Warrior", game.getHero("Warrior").getType());
+    public void aHeroTypeIsWarrior() {
+        Assert.assertEquals(true, RolGame.getHero("Warrior") instanceof Hero);
+        Assert.assertEquals("Warrior", RolGame.getHero("Warrior").getType());
     }
 
     @Test
-    public void aHeroTypeIsWizard(){
-        RolGame game = new RolGame();
-        Assert.assertEquals(true, game.getHero("Wizard") instanceof Hero);
-        Assert.assertEquals("Wizard", game.getHero("Wizard").getType());
+    public void aHeroTypeIsWizard() {
+        Assert.assertEquals(true, RolGame.getHero("Wizard") instanceof Hero);
+        Assert.assertEquals("Wizard", RolGame.getHero("Wizard").getType());
     }
 
 /*    @Test
     public void playerSelectOneHero(){
+        RolGame game = new RolGame();
+        Assert.assertArrayEquals(0, game.getPlayerHeroes());
 
     }*/
 }
