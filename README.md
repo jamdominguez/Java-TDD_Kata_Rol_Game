@@ -26,17 +26,18 @@ ___
 Into a rol game is necessary a combat system, for build this system take the next requirements:
 
 ## Functional TDD - Phase 1 (1 vs 1)
- * The player only can use 2 heroes type: Warrior or Wizard. When the game start the player must chosse one of them.
- * In this phase only exist 1 enemy type: Orc
- * Hero and enemy has the same attributes: life, mana, power, spellpower, armor, spellarmor but different values.
- * Hero start with defnied attributes according if is Warrior or Wizard:
+ * RQ1. The game has only one player.
+ * RQ2. The player only can use 2 heroes type: Warrior or Wizard. When the game start the player must chosse one of them.
+ * RQ3. In this phase only exist 1 enemy type: Orc
+ * RQ4. Hero and enemy has the same attributes: life, mana, power, spellpower, armor, spellarmor but different values.
+ * RQ5. Hero start with defnied attributes according if is Warrior or Wizard:
 	  * Warrior: life 100, mana 0, power 20, spellpower 0, armor 10, spellarmor 0
 	  * Wizard: life 70, mana 200, power 5, spellpower 30, armor 0, spellarmor 10
- * The enemy has attributes random into a interval:
+ * RQ6. The enemy has attributes random into a interval:
 	Orc: life 50-300, mana 30-50, power 3-6, spellpower 2-4, armor 3-5, spellarmor 3-5
- * When player find a enemy, fight start
- * The fight has turns, in each of them the hero o the enemy attack: hero, enemy, hero enemy
- * Hero use habilities to fight. Some of them has coold down:
+ * RQ7. When player find a enemy, fight start
+ * RQ8. The fight has turns, in each of them the hero o the enemy attack: hero, enemy, hero enemy
+ * RQ9. Hero use habilities to fight. Some of them has coold down:
 	  * **Warrior**: 
         * meeleeAttack = random(power)
         * brutalStrike = random(power) * 2 with 3 turns of CD
@@ -50,17 +51,17 @@ Into a rol game is necessary a combat system, for build this system take the nex
         * bladeWithPoison = random(power) with 3 turns of CD. This habilities produce the enemy is poisoned for 2 turns with 5% damage produces by the hability
         * dirtyKick = random(power) with 5 turns of CD. This habilities produce the enemy power down a 20% for 2 turns
 		
- * Some habilities consumes mana like was defined, other produce special states in the heroes or enemy. When the character hasn't mana, can't use theses habilities
- * When a physic attack produce damage first consume the character enemy armor. When the armor is consumed, it is not taken into account for the next turns
- * When a magic attack produce damage first consume the spellarmor enemy armor. When the spellarmor is consumed, it is not taken into account for the next turns
- * The player choose the hero hability to fight
- * The enemy is controlling by the IA
- * In this phase the fights are 1 vs 1 always
- * When a fight start must be shown
- * When a fight finish must be shown
- * The damage done and special states must be shown
- * The character life never can be negative
- * The game finish when hero die or all enemies die.
+ * RQ10. Some habilities consumes mana like was defined, other produce special states in the heroes or enemy. When the character hasn't mana, can't use theses habilities
+ * RQ11. When a physic attack produce damage first consume the character enemy armor. When the armor is consumed, it is not taken into account for the next turns
+ * RQ12. When a magic attack produce damage first consume the spellarmor enemy armor. When the spellarmor is consumed, it is not taken into account for the next turns
+ * RQ13. The player choose the hero hability to fight
+ * RQ14. The enemy is controlling by the IA
+ * RQ15. In this phase the fights are 1 vs 1 always
+ * RQ16. When a fight start must be shown
+ * RQ17. When a fight finish must be shown
+ * RQ18. The damage done and special states must be shown
+ * RQ19. The character life never can be negative
+ * RQ20. The game finish when hero die or all enemies die.
  
 ## Technical TDD
  - Using Java and JUnit to TDD
