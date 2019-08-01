@@ -3,24 +3,24 @@ import java.util.List;
 import java.util.Map;
 
 public class RolGame {
-    private static Map<String, Hero> heroes;
+    private static Map<HeroFactory.HeroClass, Hero> heroes;
     private static Map<String, Enemy> enemies;
     private Player player;
 
     static {
-        heroes = new HashMap<String, Hero>();
-        heroes.put("Warrior", new Hero("Warrior"));
-        heroes.put("Wizard", new Hero("Wizard"));
+        heroes = new HashMap<HeroFactory.HeroClass, Hero>();
+        heroes.put(HeroFactory.HeroClass.WARRIOR, HeroFactory.getHero(HeroFactory.HeroClass.WARRIOR));
+        heroes.put(HeroFactory.HeroClass.WIZARD, HeroFactory.getHero(HeroFactory.HeroClass.WIZARD));
         enemies = new HashMap<String, Enemy>();
         enemies.put("Orc", new Enemy("Orc"));
     }
 
-    public static Map<String, Hero> getHeroes() {
+    public static Map<HeroFactory.HeroClass, Hero> getHeroes() {
         return heroes;
     }
 
-    public static Hero getHero(String heroType) {
-        return heroes.get(heroType);
+    public static Hero getHero(HeroFactory.HeroClass heroClass) {
+        return heroes.get(heroClass);
     }
 
     public static Map getEnemies() {

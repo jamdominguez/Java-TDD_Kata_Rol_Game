@@ -18,9 +18,9 @@ public class Player {
         return this.heroes;
     }
 
-    public void select(String heroType) {
+    public void select(HeroFactory.HeroClass heroClass) {
         if (this.heroes.size() != 0) this.heroes.clear();
-        this.heroes.add(new Hero(heroType));
+        this.heroes.add(HeroFactory.getHero(heroClass));
     }
 
     public void resetHeroSelection() {

@@ -1,30 +1,15 @@
-public class Hero {
-    private final String type;
-    private int life;
-    private int mana;
-    private int power;
-    private int spellPower;
-    private int armor;
-    private int spellArmor;
+public abstract  class Hero {
 
-    public Hero(String heroType) {
-        this.type = heroType;
-        if ("Warrior".equals(heroType)) {
-            this.life = 100;
-            this.power = 20;
-            this.armor = 10;
-        } else if ("Wizard".equals(heroType)) {
-            this.life = 70;
-            this.mana = 200;
-            this.power = 5;
-            this.spellPower = 30;
-            this.spellArmor = 10;
-        }
-    }
+    protected int life;
+    protected int mana;
+    protected int power;
+    protected int spellPower;
+    protected int armor;
+    protected int spellArmor;
 
-    public String getType() {
-        return this.type;
-    }
+    public abstract String getDescription();
+
+    public abstract HeroFactory.HeroClass getHeroClass();
 
     public int getLife() {
         return life;

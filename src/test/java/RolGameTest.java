@@ -19,14 +19,16 @@ public class RolGameTest {
 
     @Test
     public void RQ2_aHeroTypeIsWarrior() {
-        Assert.assertEquals(true, RolGame.getHero("Warrior") instanceof Hero);
-        Assert.assertEquals("Warrior", RolGame.getHero("Warrior").getType());
+        Assert.assertEquals(true, RolGame.getHero(HeroFactory.HeroClass.WARRIOR) instanceof Hero);
+        Assert.assertEquals(HeroFactory.HeroClass.WARRIOR, RolGame.getHero(HeroFactory.HeroClass.WARRIOR).getHeroClass());
+        Assert.assertEquals("Warrior", RolGame.getHero(HeroFactory.HeroClass.WARRIOR).getDescription());
     }
 
     @Test
     public void RQ2_aHeroTypeIsWizard() {
-        Assert.assertEquals(true, RolGame.getHero("Wizard") instanceof Hero);
-        Assert.assertEquals("Wizard", RolGame.getHero("Wizard").getType());
+        Assert.assertEquals(true, RolGame.getHero(HeroFactory.HeroClass.WIZARD) instanceof Hero);
+        Assert.assertEquals(HeroFactory.HeroClass.WIZARD, RolGame.getHero(HeroFactory.HeroClass.WIZARD).getHeroClass());
+        Assert.assertEquals("Wizard", RolGame.getHero(HeroFactory.HeroClass.WIZARD).getDescription());
     }
 
     @Test
@@ -37,13 +39,13 @@ public class RolGameTest {
         //When start no heroes assigned to the player
         Assert.assertEquals(0, game.getPlayerHeroes().size());
         //Player select the Warrior Hero
-        game.getPlayer().select("Warrior");
+        game.getPlayer().select(HeroFactory.HeroClass.WARRIOR);
         Assert.assertEquals(1, game.getPlayerHeroes().size());
-        Assert.assertEquals("Warrior", game.getPlayerHeroes().get(0).getType());
+        Assert.assertEquals(HeroFactory.HeroClass.WARRIOR, game.getPlayerHeroes().get(0).getHeroClass());
         //Player select the Wizard Hero (only 1, the Warrior is removed, the Wizard is added)
-        game.getPlayer().select("Wizard");
+        game.getPlayer().select(HeroFactory.HeroClass.WIZARD);
         Assert.assertEquals(1, game.getPlayerHeroes().size());
-        Assert.assertEquals("Wizard", game.getPlayerHeroes().get(0).getType());
+        Assert.assertEquals(HeroFactory.HeroClass.WIZARD, game.getPlayerHeroes().get(0).getHeroClass());
     }
 
     @Test
@@ -54,9 +56,9 @@ public class RolGameTest {
         //When start no heroes assigned to the player
         Assert.assertEquals(0, game.getPlayerHeroes().size());
         //Player select the Warrior Hero
-        game.getPlayer().select("Warrior");
+        game.getPlayer().select(HeroFactory.HeroClass.WARRIOR);
         Assert.assertEquals(1, game.getPlayerHeroes().size());
-        Assert.assertEquals("Warrior", game.getPlayerHeroes().get(0).getType());
+        Assert.assertEquals(HeroFactory.HeroClass.WARRIOR, game.getPlayerHeroes().get(0).getHeroClass());
         //Remove selection
         game.getPlayer().resetHeroSelection();
         Assert.assertEquals(0, game.getPlayerHeroes().size());
@@ -76,7 +78,7 @@ public class RolGameTest {
     @Test
     public void RQ4_heroesAndEnemiesHasLife() {
         //Random hero
-        Hero hero = new Hero("Warrior");
+        Hero hero = HeroFactory.getHero(HeroFactory.HeroClass.WARRIOR);
         //Random enemy
         Enemy enemy = new Enemy("Orc");
         Assert.assertEquals(true, Integer.valueOf(hero.getLife()) instanceof Integer);
@@ -86,7 +88,7 @@ public class RolGameTest {
     @Test
     public void RQ4_heroesAndEnemiesHasMana() {
         //Random hero
-        Hero hero = new Hero("Warrior");
+        Hero hero = HeroFactory.getHero(HeroFactory.HeroClass.WARRIOR);
         //Random enemy
         Enemy enemy = new Enemy("Orc");
         Assert.assertEquals(true, Integer.valueOf(hero.getMana()) instanceof Integer);
@@ -96,7 +98,7 @@ public class RolGameTest {
     @Test
     public void RQ4_heroesAndEnemiesHasPower() {
         //Random hero
-        Hero hero = new Hero("Warrior");
+        Hero hero = HeroFactory.getHero(HeroFactory.HeroClass.WARRIOR);
         //Random enemy
         Enemy enemy = new Enemy("Orc");
         Assert.assertEquals(true, Integer.valueOf(hero.getPower()) instanceof Integer);
@@ -106,7 +108,7 @@ public class RolGameTest {
     @Test
     public void RQ4_heroesAndEnemiesHasSpellpower() {
         //Random hero
-        Hero hero = new Hero("Warrior");
+        Hero hero = HeroFactory.getHero(HeroFactory.HeroClass.WARRIOR);
         //Random enemy
         Enemy enemy = new Enemy("Orc");
         Assert.assertEquals(true, Integer.valueOf(hero.getSpellPower()) instanceof Integer);
@@ -116,7 +118,7 @@ public class RolGameTest {
     @Test
     public void RQ4_heroesAndEnemiesHasArmor() {
         //Random hero
-        Hero hero = new Hero("Warrior");
+        Hero hero = HeroFactory.getHero(HeroFactory.HeroClass.WARRIOR);
         //Random enemy
         Enemy enemy = new Enemy("Orc");
         Assert.assertEquals(true, Integer.valueOf(hero.getArmor()) instanceof Integer);
@@ -126,7 +128,7 @@ public class RolGameTest {
     @Test
     public void RQ4_heroesAndEnemiesHasSpellArmor() {
         //Random hero
-        Hero hero = new Hero("Warrior");
+        Hero hero = HeroFactory.getHero(HeroFactory.HeroClass.WARRIOR);
         //Random enemy
         Enemy enemy = new Enemy("Orc");
         Assert.assertEquals(true, Integer.valueOf(hero.getSpellArmor()) instanceof Integer);
@@ -135,7 +137,7 @@ public class RolGameTest {
 
     @Test
     public void RQ5_warriorHasAttributesValues() {
-        Hero warrior = new Hero("Warrior");
+        Hero warrior = HeroFactory.getHero(HeroFactory.HeroClass.WARRIOR);
         int life = 100;
         int mana = 0;
         int power = 20;
@@ -152,7 +154,7 @@ public class RolGameTest {
 
     @Test
     public void RQ5_wizardHasAttributesValues() {
-        Hero wizard = new Hero("Wizard");
+        Hero wizard = HeroFactory.getHero(HeroFactory.HeroClass.WIZARD);
         int life = 70;
         int mana = 200;
         int power = 5;
