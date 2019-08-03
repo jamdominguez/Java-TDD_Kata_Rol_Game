@@ -112,7 +112,7 @@ Into a rol game is necessary a combat system, for build this system take the nex
   - RQ8_enemiesHasMeleeAttackBasedInPower
   - RQ8_brutalStrikeBehavior
   - RQ8_brutalStrikeOverHeroOrEnemy
-  - RQ8_mutilateBehavioir
+  - RQ8_mutilateBehavior
   - RQ8_mutilateOverHeroOrEnemy
   - RQ8_letItGoBehavior
   - RQ8_letItGoOverHeroOrEnemy
