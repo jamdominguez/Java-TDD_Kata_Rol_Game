@@ -169,4 +169,14 @@ public class RolGameTest {
         Assert.assertEquals(spellArmor, wizard.getSpellArmor());
     }
 
+    @Test
+    public void RQ6_orcHasAttributesValuesIntoAInterval() {
+        Enemy orc = new Enemy("Orc");
+        Assert.assertEquals(true, 50 <= orc.getLife() && orc.getLife() <= 300);
+        Assert.assertEquals(true, 30 <= orc.getMana() && orc.getMana() <= 50);
+        Assert.assertEquals(true, 3 <= orc.getPower() && orc.getPower() <= 6);
+        Assert.assertEquals(true, 2 <= orc.getSpellPower() && orc.getSpellPower() <= 4);
+        Assert.assertEquals(true, 3 <= orc.getArmor() && orc.getArmor() <= 5);
+        Assert.assertEquals(true, 3 <= orc.getSpellArmor() && orc.getSpellArmor() <= 5);
+    }
 }
