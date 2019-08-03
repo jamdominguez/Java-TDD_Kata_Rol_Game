@@ -37,7 +37,7 @@ Into a rol game is necessary a combat system, for build this system take the nex
 	Orc: life 50-300, mana 30-50, power 3-6, spellpower 2-4, armor 3-5, spellarmor 3-5
  * RQ7. When player find a enemy, fight start
  * RQ8. The fight has turns, in each of them the hero o the enemy attack: hero, enemy, hero enemy
- * RQ9. Hero use habilities to fight. Some of them has coold down:
+ * RQ9. Heroes and enemies use skills to fight. Some of them has coold down:
 	  * **Warrior**: 
         * meeleeAttack = random(power)
         * brutalStrike = random(power) * 2 with 3 turns of CD
@@ -69,3 +69,56 @@ Into a rol game is necessary a combat system, for build this system take the nex
  - The game must control the fights, characters and states
  - Should exist a IA for enemies control
  - Should use inheritance for characters
+### Unit Test Cases (Use Cases)
+- RQ1
+  - RQ1_gameHasAPlayer
+- RQ2
+  - RQ2_twoHeroesToChose
+  - RQ2_aHeroTypeIsWarrior
+  - RQ2_aHeroTypeIsWizard
+  - RQ2_playerSelectOneHero
+  - RQ2_resetHeroSelection
+- RQ3
+  - RQ3_oneEnemyInGame
+  - RQ3_aEnemyTypeIsOrc
+- RQ4
+  - RQ4_heroesAndEnemiesHasLife
+  - RQ4_heroesAndEnemiesHasMana
+  - RQ4_heroesAndEnemiesHasPower
+  - RQ4_heroesAndEnemiesHasSpellpower
+  - RQ4_heroesAndEnemiesHasArmor
+  - RQ4_heroesAndEnemiesHasSpellArmor
+- RQ5
+  - RQ5_warriorHasAttributesValues
+  - RQ5_wizardHasAttributesValues
+- RQ6
+  - RQ6_orcHasAttributesValuesIntoAInterval
+- RQ7
+  - RQ7_gameHasStatesCombatAndNoCombat
+  - RQ7_ifPlayerNoFoundEnemyStateIsNoCombat
+  - RQ7_whenPlayerFindEnemyStateIsCombat
+  - RQ7_whenCombatStartAndFinishTheStateMustBeUpdated
+- RQ8
+  - RQ8_heroesHasSkillsList
+  - RQ8_enemiesHasSkillsList
+  - RQ8_skillsHasProperties_ManaNeeded_CooldDown_combatStates
+  - RQ8_combatState_PowerDown  
+  - RQ8_combatState_DamageInTime
+  - RQ8_combatState_Poisoned
+  - RQ8_warriorHasDefinedASkillList
+  - RQ8_wizardHasDefinedASkillList
+  - RQ8_orcHasDefinedASkillList
+  - RQ8_heroesHasMeleeAttackBasedInPower
+  - RQ8_enemiesHasMeleeAttackBasedInPower
+  - RQ8_brutalStrikeBehavior
+  - RQ8_brutalStrikeOverHeroOrEnemy
+  - RQ8_mutilateBehavioir
+  - RQ8_mutilateOverHeroOrEnemy
+  - RQ8_letItGoBehavior
+  - RQ8_letItGoOverHeroOrEnemy
+  - RQ8_burnAllBehavior
+  - RQ8_burnAllOverHeroOrEnemy
+  - RQ8_bladeWithPoisonBehavior
+  - RQ8_bladeWithPoisonOverHeroOrEnemy
+  - RQ8_dirtyKickBehavior
+  - RQ8_dirtyKickOverHeroOrEnemy
