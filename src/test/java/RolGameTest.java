@@ -244,9 +244,18 @@ public class RolGameTest {
 
     @Test
     public void RQ8_enemiesHasSkillsList() {
+        // Orc
         Enemy enemy = EnemyFactory.getEnemy(EnemyFactory.EnemyClass.ORC);
         Assert.assertEquals(EnemyFactory.EnemyClass.ORC, enemy.getEnemyClass());
         Assert.assertEquals(true, enemy.getSkills().size() > 0);
 
+    }
+
+    @Test
+    public void RQ8_skillsHasProperties_ManaNeeded_CooldDown_combatStates() {
+        Skill skill = new Skill();
+        Assert.assertEquals(true, Integer.valueOf(skill.getManaNeeded()) instanceof Integer);
+        Assert.assertEquals(true, Integer.valueOf(skill.getCoolDown()) instanceof Integer);
+        Assert.assertEquals(true, skill.getCombatState() instanceof CombatState);
     }
 }
