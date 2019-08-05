@@ -1,6 +1,8 @@
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.List;
+
 public class RolGameTest {
 
     @Test
@@ -256,6 +258,28 @@ public class RolGameTest {
         Skill skill = new Skill();
         Assert.assertEquals(true, Integer.valueOf(skill.getManaNeeded()) instanceof Integer);
         Assert.assertEquals(true, Integer.valueOf(skill.getCoolDown()) instanceof Integer);
-        Assert.assertEquals(true, skill.getCombatState() instanceof CombatState);
+        List combatStates =  skill.getCombatStates();
+        Assert.assertEquals(true, combatStates != null);
+    }
+
+    @Test
+    public void RQ8_combatState_PowerDown() {
+        Skill skill = new Skill();
+        skill.addCombatState(Skill.CombatState.POWER_DOWN);
+        Assert.assertEquals(Skill.CombatState.POWER_DOWN, skill.getCombatStates().get(0));
+    }
+
+    @Test
+    public void RQ8_combatState_DamageInTime() {
+        Skill skill = new Skill();
+        skill.addCombatState(Skill.CombatState.DAMAGE_IN_TIME);
+        Assert.assertEquals(Skill.CombatState.DAMAGE_IN_TIME, skill.getCombatStates().get(0));
+    }
+
+    @Test
+    public void RQ8_combatState_Poisoned() {
+        Skill skill = new Skill();
+        skill.addCombatState(Skill.CombatState.POISONED);
+        Assert.assertEquals(Skill.CombatState.POISONED, skill.getCombatStates().get(0));
     }
 }
