@@ -210,4 +210,19 @@ public class RolGameTest {
         game.updateState();
         if (game.getPlayer().isEnemyFound()) Assert.assertEquals(RolGame.State.COMBAT, game.getState());
     }
+
+    @Test
+    public void RQ7_whenCombatStartAndFinishTheStateMustBeUpdated() {
+        RolGame game = new RolGame();
+        game.addPlayer("Player1");
+        game.getPlayer().select(HeroFactory.HeroClass.WARRIOR);
+        // Start the game
+        Assert.assertEquals(RolGame.State.NO_COMBAT, game.getState());
+        // Start a combat
+        game.startCombat();
+        Assert.assertEquals(RolGame.State.COMBAT, game.getState());
+        // End combat
+        game.endCombat();
+        Assert.assertEquals(RolGame.State.NO_COMBAT, game.getState());
+    }
 }

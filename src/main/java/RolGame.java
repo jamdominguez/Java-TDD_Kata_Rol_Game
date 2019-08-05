@@ -19,7 +19,7 @@ public class RolGame {
         enemies.put(EnemyFactory.EnemyClass.ORC, EnemyFactory.getEnemy(EnemyFactory.EnemyClass.ORC));
     }
 
-    public RolGame(){
+    public RolGame() {
         this.state = State.NO_COMBAT;
     }
 
@@ -55,8 +55,16 @@ public class RolGame {
         return this.player.getHeroes();
     }
 
-    public void updateState(){
+    public void updateState() {
         if (this.player.isEnemyFound()) this.state = State.COMBAT;
         else this.state = State.NO_COMBAT;
+    }
+
+    public void startCombat() {
+        this.state = State.COMBAT;
+    }
+
+    public void endCombat() {
+        this.state = State.NO_COMBAT;
     }
 }
