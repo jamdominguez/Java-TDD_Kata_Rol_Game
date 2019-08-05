@@ -4,6 +4,7 @@ import java.util.List;
 public class Player {
     private String id;
     private List<Hero> heroes;
+    private boolean enemyFound;
 
     public Player(String id) {
         this.heroes = new ArrayList<Hero>();
@@ -25,5 +26,13 @@ public class Player {
 
     public void resetHeroSelection() {
         this.heroes = new ArrayList<Hero>();
+    }
+
+    public boolean isEnemyFound() {
+        return enemyFound;
+    }
+
+    public void setEnemyFound(boolean enemyFound) {
+        this.enemyFound = enemyFound;
     }
 }

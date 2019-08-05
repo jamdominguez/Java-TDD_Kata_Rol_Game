@@ -184,4 +184,30 @@ public class RolGameTest {
             Assert.assertEquals(true, 3 <= orc.getSpellArmor() && orc.getSpellArmor() <= 5);
         }
     }
+
+    @Test
+    public void RQ7_gameHasStatesCombatAndNoCombat() {
+        Assert.assertEquals(true, RolGame.State.COMBAT != null);
+        Assert.assertEquals(true, RolGame.State.NO_COMBAT != null);
+    }
+
+    @Test
+    public void RQ7_ifPlayerNoFoundEnemyStateIsNoCombat() {
+        RolGame game = new RolGame();
+        game.addPlayer("Player1");
+        game.getPlayer().select(HeroFactory.HeroClass.WARRIOR);
+        game.getPlayer().setEnemyFound(false);
+        game.updateState();
+        if (!game.getPlayer().isEnemyFound()) Assert.assertEquals(RolGame.State.NO_COMBAT, game.getState());
+    }
+
+    @Test
+    public void RQ7_whenPlayerFindEnemyStateIsCombat() {
+        RolGame game = new RolGame();
+        game.addPlayer("Player1");
+        game.getPlayer().select(HeroFactory.HeroClass.WARRIOR);
+        game.getPlayer().setEnemyFound(true);
+        game.updateState();
+        if (game.getPlayer().isEnemyFound()) Assert.assertEquals(RolGame.State.COMBAT, game.getState());
+    }
 }

@@ -3,6 +3,10 @@ import java.util.List;
 import java.util.Map;
 
 public class RolGame {
+
+    public enum State {COMBAT, NO_COMBAT}
+
+    private State state;
     private static Map<HeroFactory.HeroClass, Hero> heroes;
     private static Map<EnemyFactory.EnemyClass, Enemy> enemies;
     private Player player;
@@ -13,6 +17,14 @@ public class RolGame {
         heroes.put(HeroFactory.HeroClass.WIZARD, HeroFactory.getHero(HeroFactory.HeroClass.WIZARD));
         enemies = new HashMap<EnemyFactory.EnemyClass, Enemy>();
         enemies.put(EnemyFactory.EnemyClass.ORC, EnemyFactory.getEnemy(EnemyFactory.EnemyClass.ORC));
+    }
+
+    public RolGame(){
+        this.state = State.NO_COMBAT;
+    }
+
+    public State getState() {
+        return state;
     }
 
     public static Map<HeroFactory.HeroClass, Hero> getHeroes() {
@@ -41,5 +53,10 @@ public class RolGame {
 
     public List<Hero> getPlayerHeroes() {
         return this.player.getHeroes();
+    }
+
+    public void updateState(){
+        if (this.player.isEnemyFound()) this.state = State.COMBAT;
+        else this.state = State.NO_COMBAT;
     }
 }
