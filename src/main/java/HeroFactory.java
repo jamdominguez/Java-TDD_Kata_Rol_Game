@@ -1,8 +1,10 @@
 public class HeroFactory {
 
-    public enum HeroClass {WARRIOR, WIZARD};
+    public enum HeroClass {WARRIOR, WIZARD}
 
-    public static Hero getHero(HeroClass heroClass){
+    ;
+
+    public static Hero getHero(HeroClass heroClass) {
         switch (heroClass) {
             case WARRIOR:
                 return new Warrior();

@@ -1,8 +1,10 @@
 public class EnemyFactory {
 
-    public enum EnemyClass {ORC};
+    public enum EnemyClass {ORC}
 
-    public static Enemy getEnemy(EnemyClass enemyClass){
+    ;
+
+    public static Enemy getEnemy(EnemyClass enemyClass) {
         switch (enemyClass) {
             case ORC:
                 return new Orc();

@@ -1,5 +1,7 @@
 public class Warrior extends Hero {
 
+    public static String DESCRIPTION = "Warrior";
+
     public Warrior() {
         this.life = 100;
         this.power = 20;
@@ -7,7 +9,7 @@ public class Warrior extends Hero {
     }
 
     public String getDescription() {
-        return "Warrior";
+        return DESCRIPTION;
     }
 
     public HeroFactory.HeroClass getHeroClass() {

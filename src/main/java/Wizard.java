@@ -1,5 +1,7 @@
 public class Wizard extends Hero {
 
+    public static String DESCRIPTION = "Wizard";
+
     public Wizard() {
         this.life = 70;
         this.mana = 200;
@@ -9,7 +11,7 @@ public class Wizard extends Hero {
     }
 
     public String getDescription() {
-        return "Wizard";
+        return DESCRIPTION;
     }
 
     public HeroFactory.HeroClass getHeroClass() {
