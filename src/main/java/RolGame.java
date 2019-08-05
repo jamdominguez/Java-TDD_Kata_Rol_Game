@@ -4,15 +4,15 @@ import java.util.Map;
 
 public class RolGame {
     private static Map<HeroFactory.HeroClass, Hero> heroes;
-    private static Map<String, Enemy> enemies;
+    private static Map<EnemyFactory.EnemyClass, Enemy> enemies;
     private Player player;
 
     static {
         heroes = new HashMap<HeroFactory.HeroClass, Hero>();
         heroes.put(HeroFactory.HeroClass.WARRIOR, HeroFactory.getHero(HeroFactory.HeroClass.WARRIOR));
         heroes.put(HeroFactory.HeroClass.WIZARD, HeroFactory.getHero(HeroFactory.HeroClass.WIZARD));
-        enemies = new HashMap<String, Enemy>();
-        enemies.put("Orc", new Enemy("Orc"));
+        enemies = new HashMap<EnemyFactory.EnemyClass, Enemy>();
+        enemies.put(EnemyFactory.EnemyClass.ORC, EnemyFactory.getEnemy(EnemyFactory.EnemyClass.ORC));
     }
 
     public static Map<HeroFactory.HeroClass, Hero> getHeroes() {
@@ -27,8 +27,8 @@ public class RolGame {
         return enemies;
     }
 
-    public static Enemy getEnemy(String enemyType) {
-        return enemies.get(enemyType);
+    public static Enemy getEnemy(EnemyFactory.EnemyClass enemyClass) {
+        return enemies.get(enemyClass);
     }
 
     public Player getPlayer() {

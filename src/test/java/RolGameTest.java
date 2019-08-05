@@ -71,8 +71,9 @@ public class RolGameTest {
 
     @Test
     public void RQ3_aEnemyTypeIsOrc() {
-        Assert.assertEquals(true, RolGame.getEnemy("Orc") instanceof Enemy);
-        Assert.assertEquals("Orc", RolGame.getEnemy("Orc").getType());
+        Assert.assertEquals(true, RolGame.getEnemy(EnemyFactory.EnemyClass.ORC) instanceof Enemy);
+        Assert.assertEquals(EnemyFactory.EnemyClass.ORC, RolGame.getEnemy(EnemyFactory.EnemyClass.ORC).getHeroClass());
+        Assert.assertEquals("Orc", RolGame.getEnemy(EnemyFactory.EnemyClass.ORC).getDescription());
     }
 
     @Test
@@ -80,7 +81,7 @@ public class RolGameTest {
         //Random hero
         Hero hero = HeroFactory.getHero(HeroFactory.HeroClass.WARRIOR);
         //Random enemy
-        Enemy enemy = new Enemy("Orc");
+        Enemy enemy = EnemyFactory.getEnemy(EnemyFactory.EnemyClass.ORC);
         Assert.assertEquals(true, Integer.valueOf(hero.getLife()) instanceof Integer);
         Assert.assertEquals(true, Integer.valueOf(enemy.getLife()) instanceof Integer);
     }
@@ -90,7 +91,7 @@ public class RolGameTest {
         //Random hero
         Hero hero = HeroFactory.getHero(HeroFactory.HeroClass.WARRIOR);
         //Random enemy
-        Enemy enemy = new Enemy("Orc");
+        Enemy enemy = EnemyFactory.getEnemy(EnemyFactory.EnemyClass.ORC);
         Assert.assertEquals(true, Integer.valueOf(hero.getMana()) instanceof Integer);
         Assert.assertEquals(true, Integer.valueOf(enemy.getMana()) instanceof Integer);
     }
@@ -100,7 +101,7 @@ public class RolGameTest {
         //Random hero
         Hero hero = HeroFactory.getHero(HeroFactory.HeroClass.WARRIOR);
         //Random enemy
-        Enemy enemy = new Enemy("Orc");
+        Enemy enemy = EnemyFactory.getEnemy(EnemyFactory.EnemyClass.ORC);
         Assert.assertEquals(true, Integer.valueOf(hero.getPower()) instanceof Integer);
         Assert.assertEquals(true, Integer.valueOf(enemy.getPower()) instanceof Integer);
     }
@@ -110,7 +111,7 @@ public class RolGameTest {
         //Random hero
         Hero hero = HeroFactory.getHero(HeroFactory.HeroClass.WARRIOR);
         //Random enemy
-        Enemy enemy = new Enemy("Orc");
+        Enemy enemy = EnemyFactory.getEnemy(EnemyFactory.EnemyClass.ORC);
         Assert.assertEquals(true, Integer.valueOf(hero.getSpellPower()) instanceof Integer);
         Assert.assertEquals(true, Integer.valueOf(enemy.getSpellPower()) instanceof Integer);
     }
@@ -120,7 +121,7 @@ public class RolGameTest {
         //Random hero
         Hero hero = HeroFactory.getHero(HeroFactory.HeroClass.WARRIOR);
         //Random enemy
-        Enemy enemy = new Enemy("Orc");
+        Enemy enemy = EnemyFactory.getEnemy(EnemyFactory.EnemyClass.ORC);
         Assert.assertEquals(true, Integer.valueOf(hero.getArmor()) instanceof Integer);
         Assert.assertEquals(true, Integer.valueOf(enemy.getArmor()) instanceof Integer);
     }
@@ -130,7 +131,7 @@ public class RolGameTest {
         //Random hero
         Hero hero = HeroFactory.getHero(HeroFactory.HeroClass.WARRIOR);
         //Random enemy
-        Enemy enemy = new Enemy("Orc");
+        Enemy enemy = EnemyFactory.getEnemy(EnemyFactory.EnemyClass.ORC);
         Assert.assertEquals(true, Integer.valueOf(hero.getSpellArmor()) instanceof Integer);
         Assert.assertEquals(true, Integer.valueOf(enemy.getSpellArmor()) instanceof Integer);
     }
@@ -171,12 +172,16 @@ public class RolGameTest {
 
     @Test
     public void RQ6_orcHasAttributesValuesIntoAInterval() {
-        Enemy orc = new Enemy("Orc");
-        Assert.assertEquals(true, 50 <= orc.getLife() && orc.getLife() <= 300);
-        Assert.assertEquals(true, 30 <= orc.getMana() && orc.getMana() <= 50);
-        Assert.assertEquals(true, 3 <= orc.getPower() && orc.getPower() <= 6);
-        Assert.assertEquals(true, 2 <= orc.getSpellPower() && orc.getSpellPower() <= 4);
-        Assert.assertEquals(true, 3 <= orc.getArmor() && orc.getArmor() <= 5);
-        Assert.assertEquals(true, 3 <= orc.getSpellArmor() && orc.getSpellArmor() <= 5);
+        Enemy orc;
+        // Testing 1000 cases for random values are inside interval
+        for (int i = 0; i <= 1000; i++) {
+            orc = EnemyFactory.getEnemy(EnemyFactory.EnemyClass.ORC);
+            Assert.assertEquals(true, 50 <= orc.getLife() && orc.getLife() <= 300);
+            Assert.assertEquals(true, 30 <= orc.getMana() && orc.getMana() <= 50);
+            Assert.assertEquals(true, 3 <= orc.getPower() && orc.getPower() <= 6);
+            Assert.assertEquals(true, 2 <= orc.getSpellPower() && orc.getSpellPower() <= 4);
+            Assert.assertEquals(true, 3 <= orc.getArmor() && orc.getArmor() <= 5);
+            Assert.assertEquals(true, 3 <= orc.getSpellArmor() && orc.getSpellArmor() <= 5);
+        }
     }
 }

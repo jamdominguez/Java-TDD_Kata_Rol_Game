@@ -1,19 +1,15 @@
-public class Enemy {
-    private final String type;
-    private int life;
-    private int mana;
-    private int power;
-    private int spellPower;
-    private int armor;
-    private int spellArmor;
+public abstract class Enemy {
 
-    public Enemy(String enemyType) {
-        this.type = enemyType;
-    }
+    protected int life;
+    protected int mana;
+    protected int power;
+    protected int spellPower;
+    protected int armor;
+    protected int spellArmor;
 
-    public String getType() {
-        return this.type;
-    }
+    public abstract String getDescription();
+
+    public abstract EnemyFactory.EnemyClass getHeroClass();
 
     public int getLife() {
         return life;
