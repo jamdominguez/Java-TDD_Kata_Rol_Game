@@ -1,3 +1,6 @@
+import java.util.HashMap;
+import java.util.Map;
+
 public class Orc extends Enemy {
 
     public static String DESCRIPTION = "Orc";
@@ -17,5 +20,11 @@ public class Orc extends Enemy {
 
     public EnemyFactory.EnemyClass getEnemyClass() {
         return EnemyFactory.EnemyClass.ORC;
+    }
+
+    public Map getSkills() {
+        Map skills = new HashMap();
+        skills.put(0, "Skill0");
+        return skills;
     }
 }

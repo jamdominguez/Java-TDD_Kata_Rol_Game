@@ -241,4 +241,12 @@ public class RolGameTest {
         Assert.assertEquals(HeroFactory.HeroClass.WIZARD, heroSelected.getHeroClass());
         Assert.assertEquals(true, heroSelected.getSkills().size() > 0);
     }
+
+    @Test
+    public void RQ8_enemiesHasSkillsList() {
+        Enemy enemy = EnemyFactory.getEnemy(EnemyFactory.EnemyClass.ORC);
+        Assert.assertEquals(EnemyFactory.EnemyClass.ORC, enemy.getEnemyClass());
+        Assert.assertEquals(true, enemy.getSkills().size() > 0);
+
+    }
 }
