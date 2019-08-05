@@ -72,7 +72,7 @@ public class RolGameTest {
     @Test
     public void RQ3_aEnemyTypeIsOrc() {
         Assert.assertEquals(true, RolGame.getEnemy(EnemyFactory.EnemyClass.ORC) instanceof Enemy);
-        Assert.assertEquals(EnemyFactory.EnemyClass.ORC, RolGame.getEnemy(EnemyFactory.EnemyClass.ORC).getHeroClass());
+        Assert.assertEquals(EnemyFactory.EnemyClass.ORC, RolGame.getEnemy(EnemyFactory.EnemyClass.ORC).getEnemyClass());
         Assert.assertEquals("Orc", RolGame.getEnemy(EnemyFactory.EnemyClass.ORC).getDescription());
     }
 

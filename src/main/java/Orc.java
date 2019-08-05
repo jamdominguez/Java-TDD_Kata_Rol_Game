@@ -14,7 +14,7 @@ public class Orc extends Enemy {
         return "Orc";
     }
 
-    public EnemyFactory.EnemyClass getHeroClass() {
+    public EnemyFactory.EnemyClass getEnemyClass() {
         return EnemyFactory.EnemyClass.ORC;
     }
 }
