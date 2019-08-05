@@ -1,3 +1,6 @@
+import java.util.HashMap;
+import java.util.Map;
+
 public class Wizard extends Hero {
 
     public static String DESCRIPTION = "Wizard";
@@ -16,5 +19,11 @@ public class Wizard extends Hero {
 
     public HeroFactory.HeroClass getHeroClass() {
         return HeroFactory.HeroClass.WIZARD;
+    }
+
+    public Map getSkills() {
+        Map skills = new HashMap();
+        skills.put(0, "Skill0");
+        return skills;
     }
 }

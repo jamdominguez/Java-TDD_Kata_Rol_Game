@@ -225,4 +225,20 @@ public class RolGameTest {
         game.endCombat();
         Assert.assertEquals(RolGame.State.NO_COMBAT, game.getState());
     }
+
+    @Test
+    public void RQ8_heroesHasSkillsList() {
+        RolGame game = new RolGame();
+        game.addPlayer("Player1");
+        // Select Warrior
+        game.getPlayer().select(HeroFactory.HeroClass.WARRIOR);
+        Hero heroSelected = game.getPlayer().getHeroes().get(0);
+        Assert.assertEquals(HeroFactory.HeroClass.WARRIOR, heroSelected.getHeroClass());
+        Assert.assertEquals(true, heroSelected.getSkills().size() > 0);
+        // Select Wizard
+        game.getPlayer().select(HeroFactory.HeroClass.WIZARD);
+        heroSelected = game.getPlayer().getHeroes().get(0);
+        Assert.assertEquals(HeroFactory.HeroClass.WIZARD, heroSelected.getHeroClass());
+        Assert.assertEquals(true, heroSelected.getSkills().size() > 0);
+    }
 }
