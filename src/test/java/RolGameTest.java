@@ -229,7 +229,7 @@ public class RolGameTest {
     }
 
     @Test
-    public void RQ8_heroesHasSkillsList() {
+    public void RQ9_heroesHasSkillsList() {
         RolGame game = new RolGame();
         game.addPlayer("Player1");
         // Select Warrior
@@ -245,7 +245,7 @@ public class RolGameTest {
     }
 
     @Test
-    public void RQ8_enemiesHasSkillsList() {
+    public void RQ9_enemiesHasSkillsList() {
         // Orc
         Enemy enemy = EnemyFactory.getEnemy(EnemyFactory.EnemyClass.ORC);
         Assert.assertEquals(EnemyFactory.EnemyClass.ORC, enemy.getEnemyClass());
@@ -254,7 +254,7 @@ public class RolGameTest {
     }
 
     @Test
-    public void RQ8_skillsHasProperties_ManaNeeded_CooldDown_combatStates() {
+    public void RQ9_skillsHasProperties_ManaNeeded_CooldDown_combatStates() {
         Skill skill = new Skill();
         Assert.assertEquals(true, Integer.valueOf(skill.getManaNeeded()) instanceof Integer);
         Assert.assertEquals(true, Integer.valueOf(skill.getCoolDown()) instanceof Integer);
@@ -263,21 +263,21 @@ public class RolGameTest {
     }
 
     @Test
-    public void RQ8_combatState_PowerDown() {
+    public void RQ9_combatState_PowerDown() {
         Skill skill = new Skill();
         skill.addCombatState(Skill.CombatState.POWER_DOWN);
         Assert.assertEquals(Skill.CombatState.POWER_DOWN, skill.getCombatStates().get(0));
     }
 
     @Test
-    public void RQ8_combatState_DamageInTime() {
+    public void RQ9_combatState_DamageInTime() {
         Skill skill = new Skill();
         skill.addCombatState(Skill.CombatState.DAMAGE_IN_TIME);
         Assert.assertEquals(Skill.CombatState.DAMAGE_IN_TIME, skill.getCombatStates().get(0));
     }
 
     @Test
-    public void RQ8_combatState_Poisoned() {
+    public void RQ9_combatState_Poisoned() {
         Skill skill = new Skill();
         skill.addCombatState(Skill.CombatState.POISONED);
         Assert.assertEquals(Skill.CombatState.POISONED, skill.getCombatStates().get(0));
