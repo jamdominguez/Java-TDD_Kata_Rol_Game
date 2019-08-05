@@ -98,6 +98,15 @@ Into a rol game is necessary a combat system, for build this system take the nex
   - RQ7_ifPlayerNoFoundEnemyStateIsNoCombat
   - RQ7_whenPlayerFindEnemyStateIsCombat
   - RQ7_whenCombatStartAndFinishTheStateMustBeUpdated
+- RQ8  
+  - RQ8_inFightMustExistATurnCounter
+  - RQ8_whenTheFightStarTheTurnCounterIs0
+  - RQ8_whenTheFightStarHeroesAndEnemiesHasTheAttributesFull
+  - RQ8_inOneTurnTheHeroesAttackAndTheEnemiesTooOneTimeByDefault
+  - RQ8_theFightFinishWhenEnemiesLifeIs0
+  - RQ8_ifEnemiesLifeIs0_Victory
+  - RQ8_theFightFinishWhenHeroesLifeIs0
+  - RQ8_ifHeroesLifeIs0_Defeat
 - RQ9
   - RQ9_heroesHasSkillsList
   - RQ9_enemiesHasSkillsList
