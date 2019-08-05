@@ -229,6 +229,18 @@ public class RolGameTest {
     }
 
     @Test
+    public void RQ8_inFightMustExistATurnCounter(){
+        RolGame game = new RolGame();
+        CombatManager combatMng = game.getCombatManager();
+        Assert.assertEquals(0, combatMng.getTurn());
+        combatMng.nextTurn();
+        Assert.assertEquals(1, combatMng.getTurn());
+        combatMng.nextTurn();
+        Assert.assertEquals(2, combatMng.getTurn());
+
+    }
+
+    @Test
     public void RQ9_heroesHasSkillsList() {
         RolGame game = new RolGame();
         game.addPlayer("Player1");

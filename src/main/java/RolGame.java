@@ -5,8 +5,8 @@ import java.util.Map;
 public class RolGame {
 
     public enum State {COMBAT, NO_COMBAT}
-
     private State state;
+    private CombatManager combatManager;
     private static Map<HeroFactory.HeroClass, Hero> heroes;
     private static Map<EnemyFactory.EnemyClass, Enemy> enemies;
     private Player player;
@@ -19,8 +19,13 @@ public class RolGame {
         enemies.put(EnemyFactory.EnemyClass.ORC, EnemyFactory.getEnemy(EnemyFactory.EnemyClass.ORC));
     }
 
+    public CombatManager getCombatManager() {
+        return this.combatManager;
+    }
+
     public RolGame() {
         this.state = State.NO_COMBAT;
+        this.combatManager = new CombatManager();
     }
 
     public State getState() {
