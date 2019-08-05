@@ -98,27 +98,27 @@ Into a rol game is necessary a combat system, for build this system take the nex
   - RQ7_ifPlayerNoFoundEnemyStateIsNoCombat
   - RQ7_whenPlayerFindEnemyStateIsCombat
   - RQ7_whenCombatStartAndFinishTheStateMustBeUpdated
-- RQ8
-  - RQ8_heroesHasSkillsList
-  - RQ8_enemiesHasSkillsList
-  - RQ8_skillsHasProperties_ManaNeeded_CooldDown_combatStates
-  - RQ8_combatState_PowerDown  
-  - RQ8_combatState_DamageInTime
-  - RQ8_combatState_Poisoned
-  - RQ8_warriorHasDefinedASkillList
-  - RQ8_wizardHasDefinedASkillList
-  - RQ8_orcHasDefinedASkillList
-  - RQ8_heroesHasMeleeAttackBasedInPower
-  - RQ8_enemiesHasMeleeAttackBasedInPower
-  - RQ8_brutalStrikeBehavior
-  - RQ8_brutalStrikeOverHeroOrEnemy
-  - RQ8_mutilateBehavior
-  - RQ8_mutilateOverHeroOrEnemy
-  - RQ8_letItGoBehavior
-  - RQ8_letItGoOverHeroOrEnemy
-  - RQ8_burnAllBehavior
-  - RQ8_burnAllOverHeroOrEnemy
-  - RQ8_bladeWithPoisonBehavior
-  - RQ8_bladeWithPoisonOverHeroOrEnemy
-  - RQ8_dirtyKickBehavior
-  - RQ8_dirtyKickOverHeroOrEnemy
+- RQ9
+  - RQ9_heroesHasSkillsList
+  - RQ9_enemiesHasSkillsList
+  - RQ9_skillsHasProperties_ManaNeeded_CooldDown_combatStates
+  - RQ9_combatState_PowerDown  
+  - RQ9_combatState_DamageInTime
+  - RQ9_combatState_Poisoned
+  - RQ9_warriorHasDefinedASkillList
+  - RQ9_wizardHasDefinedASkillList
+  - RQ9_orcHasDefinedASkillList
+  - RQ9_heroesHasMeleeAttackBasedInPower
+  - RQ9_enemiesHasMeleeAttackBasedInPower
+  - RQ9_brutalStrikeBehavior
+  - RQ9_brutalStrikeOverHeroOrEnemy
+  - RQ9_mutilateBehavior
+  - RQ9_mutilateOverHeroOrEnemy
+  - RQ9_letItGoBehavior
+  - RQ9_letItGoOverHeroOrEnemy
+  - RQ9_burnAllBehavior
+  - RQ9_burnAllOverHeroOrEnemy
+  - RQ9_bladeWithPoisonBehavior
+  - RQ9_bladeWithPoisonOverHeroOrEnemy
+  - RQ9_dirtyKickBehavior
+  - RQ9_dirtyKickOverHeroOrEnemy
