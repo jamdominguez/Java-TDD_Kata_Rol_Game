@@ -17,21 +17,4 @@ public class Orc extends Enemy {
     public EnemyFactory.EnemyClass getHeroClass() {
         return EnemyFactory.EnemyClass.ORC;
     }
-
-    private int getRandomValue(int min, int max) {
-        return min + (int) (Math.random() * ((max - min) + 1));
-    }
-
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("-- ").append(getHeroClass()).append(" --\n");
-        sb.append("Life: ").append(getLife()).append("\n");
-        sb.append("Mana: ").append(getMana()).append("\n");;
-        sb.append("Power: ").append(getPower()).append("\n");;
-        sb.append("SpellPower: ").append(getSpellPower()).append("\n");;
-        sb.append("Armor: ").append(getArmor()).append("\n");;
-        sb.append("SpellArmor: ").append(getSpellArmor()).append("\n");;
-
-        return sb.toString();
-    }
 }
