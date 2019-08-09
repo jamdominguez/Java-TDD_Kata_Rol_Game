@@ -8,4 +8,8 @@ public class CombatManager {
     public void nextTurn() {
         this.turn++;
     }
+
+    public void start() {
+        this.turn = 0;
+    }
 }
