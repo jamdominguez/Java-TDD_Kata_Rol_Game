@@ -1,3 +1,5 @@
+package Characters.Heroes;
+
 public class HeroFactory {
 
     public enum HeroClass {WARRIOR, WIZARD}

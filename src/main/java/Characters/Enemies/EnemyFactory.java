@@ -1,3 +1,5 @@
+package Characters.Enemies;
+
 public class EnemyFactory {
 
     public enum EnemyClass {ORC}

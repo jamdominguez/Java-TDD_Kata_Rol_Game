@@ -1,4 +1,6 @@
-public abstract class Character {
+package Characters;
+
+public abstract class GameCharacter {
 
     protected int life;
     protected int mana;

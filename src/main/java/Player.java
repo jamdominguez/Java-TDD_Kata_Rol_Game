@@ -1,3 +1,6 @@
+import Characters.Heroes.Hero;
+import Characters.Heroes.HeroFactory;
+
 import java.util.ArrayList;
 import java.util.List;
 

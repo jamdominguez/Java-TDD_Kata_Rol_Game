@@ -1,3 +1,8 @@
+import Characters.Enemies.Enemy;
+import Characters.Enemies.EnemyFactory;
+import Characters.Heroes.Hero;
+import Characters.Heroes.HeroFactory;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
