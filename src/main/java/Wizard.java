@@ -4,6 +4,8 @@ import java.util.Map;
 public class Wizard extends Hero {
 
     public static String DESCRIPTION = "Wizard";
+    public enum SkillName {MELEE_ATTACK, LET_IT_GO, BURN_ALL};
+    private Map skills;
 
     public Wizard() {
         this.life = 70;
@@ -11,6 +13,10 @@ public class Wizard extends Hero {
         this.power = 5;
         this.spellPower = 30;
         this.spellArmor = 10;
+        this.skills = new HashMap();
+        this.skills.put(Wizard.SkillName.MELEE_ATTACK, new Skill());
+        this.skills.put(Wizard.SkillName.LET_IT_GO, new Skill());
+        this.skills.put(Wizard.SkillName.BURN_ALL, new Skill());
     }
 
     public String getDescription() {
@@ -22,8 +28,8 @@ public class Wizard extends Hero {
     }
 
     public Map getSkills() {
-        Map skills = new HashMap();
-        skills.put(0, "Skill0");
-        return skills;
+        return this.skills;
     }
+
+
 }

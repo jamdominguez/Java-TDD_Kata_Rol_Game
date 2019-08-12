@@ -2,6 +2,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.List;
+import java.util.Map;
 
 public class RolGameTest {
 
@@ -311,5 +312,32 @@ public class RolGameTest {
         Skill skill = new Skill();
         skill.addCombatState(Skill.CombatState.POISONED);
         Assert.assertEquals(Skill.CombatState.POISONED, skill.getCombatStates().get(0));
+    }
+
+    @Test
+    public void RQ9_warriorHasDefinedASkillList() {
+        Warrior warrior = (Warrior) HeroFactory.getHero(HeroFactory.HeroClass.WARRIOR);
+        Map skills = warrior.getSkills();
+        Assert.assertEquals(true, skills.containsKey(Warrior.SkillName.MELEE_ATTACK));
+        Assert.assertEquals(true, skills.containsKey(Warrior.SkillName.BRUTAL_STRIKE));
+        Assert.assertEquals(true, skills.containsKey(Warrior.SkillName.MUTILATE));
+    }
+
+    @Test
+    public void RQ9_wizardHasDefinedASkillList() {
+        Wizard wizard = (Wizard) HeroFactory.getHero(HeroFactory.HeroClass.WIZARD);
+        Map skills = wizard.getSkills();
+        Assert.assertEquals(true, skills.containsKey(Wizard.SkillName.MELEE_ATTACK));
+        Assert.assertEquals(true, skills.containsKey(Wizard.SkillName.LET_IT_GO));
+        Assert.assertEquals(true, skills.containsKey(Wizard.SkillName.BURN_ALL));
+    }
+
+    @Test
+    public void RQ9_orcHasDefinedASkillList() {
+        Orc orc = (Orc) EnemyFactory.getEnemy(EnemyFactory.EnemyClass.ORC);
+        Map skills = orc.getSkills();
+        Assert.assertEquals(true, skills.containsKey(Orc.SkillName.MELEE_ATTACK));
+        Assert.assertEquals(true, skills.containsKey(Orc.SkillName.BLADE_WITH_POSION));
+        Assert.assertEquals(true, skills.containsKey(Orc.SkillName.DIRTY_KICK));
     }
 }
