@@ -2,6 +2,8 @@ package Characters;
 
 import Skills.Skill;
 
+import java.util.Map;
+
 public abstract class GameCharacter {
 
     protected int life;
@@ -10,6 +12,7 @@ public abstract class GameCharacter {
     protected int spellPower;
     protected int armor;
     protected int spellArmor;
+    protected Map<Skill.CombatState, Integer> combatStates;
 
     public abstract String getDescription();
 
@@ -78,7 +81,7 @@ public abstract class GameCharacter {
         return sb.toString();
     }
 
-    public void getDamage(int damage, Skill.DamageType damageType) {
+    public void dealDamage(int damage, Skill.DamageType damageType) {
         if (Skill.DamageType.PHYSICAL == damageType) updatePhysicalDamage(damage);
         else if (Skill.DamageType.MAGICAL == damageType) updateMagicalDamage(damage);
     }
@@ -107,5 +110,7 @@ public abstract class GameCharacter {
         }
     }
 
-
+    public int getCombatState(Skill.CombatState state){
+        return this.combatStates.get(state);
+    }
 }

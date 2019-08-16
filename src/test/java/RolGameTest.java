@@ -382,13 +382,14 @@ public class RolGameTest {
         Hero warrior = (Warrior) HeroFactory.getHero(HeroFactory.HeroClass.WARRIOR);
         Orc orc = (Orc) EnemyFactory.getEnemy(EnemyFactory.EnemyClass.ORC);
         int orcArmor = orc.getArmor();
-
         CombatManager combatManager = new CombatManager();
         GameCharacter executor = warrior;
         List<GameCharacter> targets = new LinkedList<GameCharacter>();
         targets.add(orc);
         combatManager.executeAction(executor, targets, warrior.getSkills().get(SkillFactory.SkillName.BRUTAL_STRIKE));
         int orcArmorAfterSkill = orc.getArmor();
+        System.out.println("Orc armor " + orcArmor);
+        System.out.println("Orc armor after skill " + orcArmorAfterSkill);
         Assert.assertEquals(true, orcArmor > orcArmorAfterSkill);
     }
 
@@ -402,5 +403,22 @@ public class RolGameTest {
         Assert.assertEquals(4, skill.getCoolDown());
         Assert.assertEquals(true, skill.getCombatStates().containsKey(Skill.CombatState.POWER_DOWN_50));
         Assert.assertEquals(2, skill.getCombatStates().get(Skill.CombatState.POWER_DOWN_50));
+    }
+
+    @Test
+    public void RQ9_mutilateOverHeroOrEnemy(){
+        Hero warrior = (Warrior) HeroFactory.getHero(HeroFactory.HeroClass.WARRIOR);
+        Orc orc = (Orc) EnemyFactory.getEnemy(EnemyFactory.EnemyClass.ORC);
+        int orcArmor = orc.getArmor();
+        CombatManager combatManager = new CombatManager();
+        GameCharacter executor = warrior;
+        List<GameCharacter> targets = new LinkedList<GameCharacter>();
+        targets.add(orc);
+        combatManager.executeAction(executor, targets, warrior.getSkills().get(SkillFactory.SkillName.MUTILATE));
+        int orcArmorAfterSkill = orc.getArmor();
+        System.out.println("Orc armor " + orcArmor);
+        System.out.println("Orc armor after skill " + orcArmorAfterSkill);
+        Assert.assertEquals(true, orcArmor > orcArmorAfterSkill);
+        //Assert.assertEquals(true, orc.getCombatState(Skill.CombatState.POWER_DOWN_50));
     }
 }

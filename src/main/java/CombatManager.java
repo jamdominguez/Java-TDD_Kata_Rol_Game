@@ -20,8 +20,9 @@ public class CombatManager {
 
     public void executeAction(GameCharacter executor, List<GameCharacter> targets, Skill skill) {
         int damage = skill.dealDamage(executor.getPower(), executor.getSpellPower());
+        System.out.println(skill.getDamageType().toString() + " " + damage);
         for (GameCharacter target : targets) {
-            target.getDamage(damage, skill.getDamageType());
+            target.dealDamage(damage, skill.getDamageType());
         }
     }
 }

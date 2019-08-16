@@ -8,6 +8,6 @@ public class Mutilate extends Skill {
     }
 
     public int dealDamage(int power, int spellPower) {
-        return (int) Math.random();
+        return (int) (Math.random() * power);
     }
 }
