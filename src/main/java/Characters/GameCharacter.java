@@ -1,5 +1,7 @@
 package Characters;
 
+import Skills.Skill;
+
 public abstract class GameCharacter {
 
     protected int life;
@@ -75,4 +77,35 @@ public abstract class GameCharacter {
         sb.append("SpellArmor: ").append(getSpellArmor()).append("\n");
         return sb.toString();
     }
+
+    public void getDamage(int damage, Skill.DamageType damageType) {
+        if (Skill.DamageType.PHYSICAL == damageType) updatePhysicalDamage(damage);
+        else if (Skill.DamageType.MAGICAL == damageType) updateMagicalDamage(damage);
+    }
+
+    private void updatePhysicalDamage(int damage) {
+        if (this.getArmor() > 0) {
+            this.setArmor(this.getArmor() - damage); // first remove armor
+            if (this.getArmor() < 0) { // more damage than armor
+                this.setLife(this.getLife() + this.getArmor()); // recalculate the life
+                this.setArmor(0); // armor can't be negative, set to 0
+            }
+        } else {
+            this.setLife(this.getLife() - damage);
+        }
+    }
+
+    private void updateMagicalDamage(int damage) {
+        if (this.getSpellArmor() > 0) {
+            this.setSpellArmor(this.getSpellPower() - damage); // first remove spellarmor
+            if (this.getSpellArmor() < 0) { // more damage than armor
+                this.setLife(this.getLife() + this.getSpellArmor()); // recalculate the life
+                this.setSpellArmor(0); // armor can't be negative, set to 0
+            }
+        } else {
+            this.setLife(this.getLife() - damage);
+        }
+    }
+
+
 }

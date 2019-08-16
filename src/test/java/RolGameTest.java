@@ -381,12 +381,15 @@ public class RolGameTest {
     public void RQ9_brutalStrikeOverHeroOrEnemy() {
         Hero warrior = (Warrior) HeroFactory.getHero(HeroFactory.HeroClass.WARRIOR);
         Orc orc = (Orc) EnemyFactory.getEnemy(EnemyFactory.EnemyClass.ORC);
-        int orcLife = orc.getLife();
+        int orcArmor = orc.getArmor();
 
         CombatManager combatManager = new CombatManager();
         GameCharacter executor = warrior;
         List<GameCharacter> targets = new LinkedList<GameCharacter>();
-        //combatManager.executeAction(executor, targets, SkillFactory.SkillName.BRUTAL_STRIKE); TODO
+        targets.add(orc);
+        combatManager.executeAction(executor, targets, warrior.getSkills().get(SkillFactory.SkillName.BRUTAL_STRIKE));
+        int orcArmorAfterSkill = orc.getArmor();
+        Assert.assertEquals(true, orcArmor > orcArmorAfterSkill);
     }
 
     @Test
