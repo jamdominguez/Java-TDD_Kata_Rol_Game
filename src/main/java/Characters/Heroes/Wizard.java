@@ -32,7 +32,7 @@ public class Wizard extends Hero {
         return HeroFactory.HeroClass.WIZARD;
     }
 
-    public Map getSkills() {
+    public Map<SkillFactory.SkillName, Skill> getSkills() {
         return this.skills;
     }
 

@@ -31,7 +31,7 @@ public class Warrior extends Hero {
         return HeroFactory.HeroClass.WARRIOR;
     }
 
-    public Map getSkills() {
+    public Map<SkillFactory.SkillName, Skill> getSkills() {
         return this.skills;
     }
 
