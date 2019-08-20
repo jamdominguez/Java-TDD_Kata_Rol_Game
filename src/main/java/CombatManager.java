@@ -24,7 +24,7 @@ public class CombatManager {
         if (executorMana >= skill.getManaNeeded()) {
             executor.setMana(executorMana - skill.getManaNeeded());
             int damage = skill.dealDamage(executor.getPower(), executor.getSpellPower());
-            System.out.println("Execution action damage " + damage + " from " + executor.getDescription() + " with " + skill+ " and " + skill.getManaNeeded() + " mana needed");
+            //System.out.println("Execution action damage " + damage + " from " + executor.getDescription() + " with " + skill+ " and " + skill.getManaNeeded() + " mana needed\n");
             Map<Skill.CombatState, Integer> skillStates = skill.getCombatStates();
             for (GameCharacter target : targets) {
                 target.dealDamage(damage, skill.getDamageType());

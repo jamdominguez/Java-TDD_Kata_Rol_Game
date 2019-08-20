@@ -1,5 +1,3 @@
-package phase1;
-
 import Characters.Enemies.Enemy;
 import Characters.Enemies.EnemyFactory;
 import Characters.Enemies.Orc;
@@ -135,13 +133,9 @@ public class RQ9 {
         GameCharacter executor = warrior;
         List<GameCharacter> targets = new LinkedList<GameCharacter>();
         targets.add(orc);
-        System.out.println(executor);
-        System.out.println(orc);
         combatManager.executeAction(executor, targets, warrior.getSkills().get(SkillFactory.SkillName.BRUTAL_STRIKE));
         int orcArmorAfterSkill = orc.getArmor();
         Assert.assertEquals(true, orcArmor >= orcArmorAfterSkill); // the damage can be 0
-        System.out.println(executor);
-        System.out.println(orc);
     }
 
     @Test
@@ -165,14 +159,10 @@ public class RQ9 {
         GameCharacter executor = warrior;
         List<GameCharacter> targets = new LinkedList<GameCharacter>();
         targets.add(orc);
-        System.out.println(executor);
-        System.out.println(orc);
         combatManager.executeAction(executor, targets, warrior.getSkills().get(SkillFactory.SkillName.MUTILATE));
         int orcArmorAfterSkill = orc.getArmor();
         Assert.assertEquals(true, orcArmor >= orcArmorAfterSkill); // the damage can be 0
         Assert.assertEquals(true, orc.getCombatStates().containsKey(Skill.CombatState.POWER_DOWN_50));
-        System.out.println(executor);
-        System.out.println(orc);
     }
 
     @Test
@@ -196,14 +186,10 @@ public class RQ9 {
         int initMana = executor.getMana();
         List<GameCharacter> targets = new LinkedList<GameCharacter>();
         targets.add(orc);
-        System.out.println(executor);
-        System.out.println(orc);
         combatManager.executeAction(executor, targets, wizard.getSkills().get(SkillFactory.SkillName.LET_IT_GO));
         int orcSpellArmorAfterSkill = orc.getSpellArmor();
         Assert.assertEquals(true, orcSpellArmor >= orcSpellArmorAfterSkill); // the damage can be 0
         Assert.assertEquals(initMana - wizard.getSkills().get(SkillFactory.SkillName.LET_IT_GO).getManaNeeded(), executor.getMana());
-        System.out.println(executor);
-        System.out.println(orc);
     }
 
     @Test
@@ -227,15 +213,11 @@ public class RQ9 {
         int initMana = executor.getMana();
         List<GameCharacter> targets = new LinkedList<GameCharacter>();
         targets.add(orc);
-        System.out.println(executor);
-        System.out.println(orc);
         combatManager.executeAction(executor, targets, wizard.getSkills().get(SkillFactory.SkillName.BURN_ALL));
         int orcSpellArmorAfterSkill = orc.getSpellArmor();
         Assert.assertEquals(true, orcSpellArmor >= orcSpellArmorAfterSkill); // the damage can be 0
         Assert.assertEquals(true, orc.getCombatStates().containsKey(Skill.CombatState.DAMAGE_IN_TIME_10));
         Assert.assertEquals(initMana - wizard.getSkills().get(SkillFactory.SkillName.BURN_ALL).getManaNeeded(), executor.getMana());
-        System.out.println(executor);
-        System.out.println(orc);
     }
 
     @Test
@@ -262,9 +244,6 @@ public class RQ9 {
         List<GameCharacter> targets = new LinkedList<GameCharacter>();
         targets.add(wizard);
         targets.add(warrior);
-        System.out.println(executor);
-        System.out.println(wizard);
-        System.out.println(warrior);
         combatManager.executeAction(executor, targets, orc.getSkills().get(SkillFactory.SkillName.BLADE_WITH_POISON));
         int wizardArmorAfterSkill = wizard.getArmor();
         int warriorArmorAfterSkill = warrior.getArmor();
@@ -273,8 +252,6 @@ public class RQ9 {
         Assert.assertEquals(true, wizard.getCombatStates().containsKey(Skill.CombatState.POISONED_5));
         Assert.assertEquals(true, warrior.getCombatStates().containsKey(Skill.CombatState.POISONED_5));
         Assert.assertEquals(initMana - orc.getSkills().get(SkillFactory.SkillName.BLADE_WITH_POISON).getManaNeeded(), executor.getMana());
-        System.out.println(wizard);
-        System.out.println(warrior);
     }
 
     @Test
@@ -301,9 +278,6 @@ public class RQ9 {
         List<GameCharacter> targets = new LinkedList<GameCharacter>();
         targets.add(wizard);
         targets.add(warrior);
-        System.out.println(executor);
-        System.out.println(wizard);
-        System.out.println(warrior);
         combatManager.executeAction(executor, targets, orc.getSkills().get(SkillFactory.SkillName.DIRTY_KICK));
         int wizardArmorAfterSkill = wizard.getArmor();
         int warriorArmorAfterSkill = warrior.getArmor();
@@ -312,7 +286,5 @@ public class RQ9 {
         Assert.assertEquals(true, wizard.getCombatStates().containsKey(Skill.CombatState.POWER_DOWN_20));
         Assert.assertEquals(true, warrior.getCombatStates().containsKey(Skill.CombatState.POWER_DOWN_20));
         Assert.assertEquals(initMana - orc.getSkills().get(SkillFactory.SkillName.DIRTY_KICK).getManaNeeded(), executor.getMana());
-        System.out.println(wizard);
-        System.out.println(warrior);
     }
 }

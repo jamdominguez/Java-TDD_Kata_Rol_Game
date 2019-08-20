@@ -1,5 +1,3 @@
-package phase1;
-
 import Characters.Heroes.Hero;
 import Characters.Heroes.HeroFactory;
 import org.junit.Assert;

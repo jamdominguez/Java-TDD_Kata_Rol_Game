@@ -15,6 +15,10 @@ public abstract class GameCharacter {
     protected int spellArmor;
     protected Map<Skill.CombatState, Integer> combatStates;
 
+    public GameCharacter() {
+        this.combatStates = new HashMap<Skill.CombatState, Integer>();
+    }
+
     public abstract String getDescription();
 
     public int getLife() {

@@ -19,8 +19,6 @@ public class Warrior extends Hero {
         this.skills.put(SkillFactory.SkillName.MELEE_ATTACK, SkillFactory.getSkill(SkillFactory.SkillName.MELEE_ATTACK));
         this.skills.put(SkillFactory.SkillName.BRUTAL_STRIKE, SkillFactory.getSkill(SkillFactory.SkillName.BRUTAL_STRIKE));
         this.skills.put(SkillFactory.SkillName.MUTILATE, SkillFactory.getSkill(SkillFactory.SkillName.MUTILATE));
-        this.combatStates = new HashMap<Skill.CombatState, Integer>();
-
     }
 
     public String getDescription() {
