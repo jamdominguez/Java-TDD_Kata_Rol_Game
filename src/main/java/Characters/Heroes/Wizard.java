@@ -21,6 +21,7 @@ public class Wizard extends Hero {
         this.skills.put(SkillFactory.SkillName.MELEE_ATTACK, SkillFactory.getSkill(SkillFactory.SkillName.MELEE_ATTACK));
         this.skills.put(SkillFactory.SkillName.LET_IT_GO, SkillFactory.getSkill(SkillFactory.SkillName.LET_IT_GO));
         this.skills.put(SkillFactory.SkillName.BURN_ALL, SkillFactory.getSkill(SkillFactory.SkillName.BURN_ALL));
+        this.combatStates = new HashMap<Skill.CombatState, Integer>();
     }
 
     public String getDescription() {

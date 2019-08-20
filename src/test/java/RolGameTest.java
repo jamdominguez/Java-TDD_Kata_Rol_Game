@@ -493,4 +493,41 @@ public class RolGameTest {
         System.out.println(executor);
         System.out.println(orc);
     }
+
+    @Test
+    public void RQ9_bladeWithPoisonBehavior(){
+        Enemy orc = EnemyFactory.getEnemy(EnemyFactory.EnemyClass.ORC);
+        Skill skill = SkillFactory.getSkill(SkillFactory.SkillName.BLADE_WITH_POISON);
+        int skillDamage = skill.dealDamage(orc.getPower(), orc.getSpellPower());
+        int maxExpected = orc.getPower();
+        Assert.assertEquals(true, 0 <= skillDamage && skillDamage <= maxExpected);
+        Assert.assertEquals(3, skill.getCoolDown());
+        Assert.assertEquals(Integer.valueOf(2), skill.getCombatStates().get(Skill.CombatState.POISONED_5));
+    }
+
+    @Test
+    public void RQ9_bladeWithPoisonOverHeroOrEnemy(){
+        Hero wizard = (Wizard) HeroFactory.getHero(HeroFactory.HeroClass.WIZARD);
+        Hero warrior = (Warrior) HeroFactory.getHero(HeroFactory.HeroClass.WARRIOR);
+        Orc orc = (Orc) EnemyFactory.getEnemy(EnemyFactory.EnemyClass.ORC);
+        int wizardArmor = wizard.getArmor();
+        int warriorArmor = warrior.getArmor();
+        CombatManager combatManager = new CombatManager();
+        GameCharacter executor = orc;
+        int initMana = executor.getMana();
+        List<GameCharacter> targets = new LinkedList<GameCharacter>();
+        targets.add(wizard);
+        targets.add(warrior);
+        System.out.println(executor);
+        System.out.println(wizard);
+        System.out.println(warrior);
+        combatManager.executeAction(executor, targets, orc.getSkills().get(SkillFactory.SkillName.BLADE_WITH_POISON));
+        int wizardArmorAfterSkill = wizard.getArmor();
+        int warriorArmorAfterSkill = warrior.getArmor();
+        Assert.assertEquals(true, wizardArmor >= wizardArmorAfterSkill); // the damage can be 0
+        Assert.assertEquals(true, warriorArmor >= warriorArmorAfterSkill); // the damage can be 0
+        Assert.assertEquals(initMana - orc.getSkills().get(SkillFactory.SkillName.BLADE_WITH_POISON).getManaNeeded(), executor.getMana());
+        System.out.println(wizard);
+        System.out.println(warrior);
+    }
 }

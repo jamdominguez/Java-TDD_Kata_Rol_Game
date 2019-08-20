@@ -18,7 +18,7 @@ public class Orc extends Enemy {
         this.spellPower = getRandomValue(2, 4);
         this.armor = getRandomValue(3, 5);
         this.spellArmor = getRandomValue(3, 5);
-        this.skills = new HashMap();
+        this.skills = new HashMap<SkillFactory.SkillName, Skill>();
         this.skills.put(SkillFactory.SkillName.MELEE_ATTACK, SkillFactory.getSkill(SkillFactory.SkillName.MELEE_ATTACK));
         this.skills.put(SkillFactory.SkillName.BLADE_WITH_POISON, SkillFactory.getSkill(SkillFactory.SkillName.BLADE_WITH_POISON));
         this.skills.put(SkillFactory.SkillName.DIRTY_KICK, SkillFactory.getSkill(SkillFactory.SkillName.DIRTY_KICK));
@@ -33,7 +33,7 @@ public class Orc extends Enemy {
         return EnemyFactory.EnemyClass.ORC;
     }
 
-    public Map getSkills() {
+    public Map<SkillFactory.SkillName, Skill> getSkills() {
         return this.skills;
     }
 
