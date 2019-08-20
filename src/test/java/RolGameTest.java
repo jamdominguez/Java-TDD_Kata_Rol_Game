@@ -423,11 +423,7 @@ public class RolGameTest {
         combatManager.executeAction(executor, targets, warrior.getSkills().get(SkillFactory.SkillName.MUTILATE));
         int orcArmorAfterSkill = orc.getArmor();
         Assert.assertEquals(true, orcArmor >= orcArmorAfterSkill); // the damage can be 0
-        try {
-            Assert.assertEquals(true, orc.getCombatState(Skill.CombatState.POWER_DOWN_50) == 2);
-        } catch (CombatStateException e) {
-            System.out.println("The target hasn't the combat state");
-        }
+        Assert.assertEquals(true, orc.getCombatStates().containsKey(Skill.CombatState.POWER_DOWN_50));
         System.out.println(executor);
         System.out.println(orc);
     }
@@ -489,6 +485,7 @@ public class RolGameTest {
         combatManager.executeAction(executor, targets, wizard.getSkills().get(SkillFactory.SkillName.BURN_ALL));
         int orcSpellArmorAfterSkill = orc.getSpellArmor();
         Assert.assertEquals(true, orcSpellArmor >= orcSpellArmorAfterSkill); // the damage can be 0
+        Assert.assertEquals(true, orc.getCombatStates().containsKey(Skill.CombatState.DAMAGE_IN_TIME_10));
         Assert.assertEquals(initMana - wizard.getSkills().get(SkillFactory.SkillName.BURN_ALL).getManaNeeded(), executor.getMana());
         System.out.println(executor);
         System.out.println(orc);
@@ -526,7 +523,48 @@ public class RolGameTest {
         int warriorArmorAfterSkill = warrior.getArmor();
         Assert.assertEquals(true, wizardArmor >= wizardArmorAfterSkill); // the damage can be 0
         Assert.assertEquals(true, warriorArmor >= warriorArmorAfterSkill); // the damage can be 0
+        Assert.assertEquals(true, wizard.getCombatStates().containsKey(Skill.CombatState.POISONED_5));
+        Assert.assertEquals(true, warrior.getCombatStates().containsKey(Skill.CombatState.POISONED_5));
         Assert.assertEquals(initMana - orc.getSkills().get(SkillFactory.SkillName.BLADE_WITH_POISON).getManaNeeded(), executor.getMana());
+        System.out.println(wizard);
+        System.out.println(warrior);
+    }
+
+    @Test
+    public void RQ9_dirtyKickBehavior(){
+        Enemy orc = EnemyFactory.getEnemy(EnemyFactory.EnemyClass.ORC);
+        Skill skill = SkillFactory.getSkill(SkillFactory.SkillName.DIRTY_KICK);
+        int skillDamage = skill.dealDamage(orc.getPower(), orc.getSpellPower());
+        int maxExpected = orc.getPower();
+        Assert.assertEquals(true, 0 <= skillDamage && skillDamage <= maxExpected);
+        Assert.assertEquals(5, skill.getCoolDown());
+        Assert.assertEquals(Integer.valueOf(2), skill.getCombatStates().get(Skill.CombatState.POWER_DOWN_20));
+    }
+
+    @Test
+    public void RQ9_dirtyKickOverHeroOrEnemy(){
+        Hero wizard = (Wizard) HeroFactory.getHero(HeroFactory.HeroClass.WIZARD);
+        Hero warrior = (Warrior) HeroFactory.getHero(HeroFactory.HeroClass.WARRIOR);
+        Orc orc = (Orc) EnemyFactory.getEnemy(EnemyFactory.EnemyClass.ORC);
+        int wizardArmor = wizard.getArmor();
+        int warriorArmor = warrior.getArmor();
+        CombatManager combatManager = new CombatManager();
+        GameCharacter executor = orc;
+        int initMana = executor.getMana();
+        List<GameCharacter> targets = new LinkedList<GameCharacter>();
+        targets.add(wizard);
+        targets.add(warrior);
+        System.out.println(executor);
+        System.out.println(wizard);
+        System.out.println(warrior);
+        combatManager.executeAction(executor, targets, orc.getSkills().get(SkillFactory.SkillName.DIRTY_KICK));
+        int wizardArmorAfterSkill = wizard.getArmor();
+        int warriorArmorAfterSkill = warrior.getArmor();
+        Assert.assertEquals(true, wizardArmor >= wizardArmorAfterSkill); // the damage can be 0
+        Assert.assertEquals(true, warriorArmor >= warriorArmorAfterSkill); // the damage can be 0
+        Assert.assertEquals(true, wizard.getCombatStates().containsKey(Skill.CombatState.POWER_DOWN_20));
+        Assert.assertEquals(true, warrior.getCombatStates().containsKey(Skill.CombatState.POWER_DOWN_20));
+        Assert.assertEquals(initMana - orc.getSkills().get(SkillFactory.SkillName.DIRTY_KICK).getManaNeeded(), executor.getMana());
         System.out.println(wizard);
         System.out.println(warrior);
     }

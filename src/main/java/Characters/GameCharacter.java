@@ -79,6 +79,10 @@ public abstract class GameCharacter {
         sb.append("SpellPower: ").append(getSpellPower()).append("\n");
         sb.append("Armor: ").append(getArmor()).append("\n");
         sb.append("SpellArmor: ").append(getSpellArmor()).append("\n");
+        sb.append("Combat States: \n");
+        for (Map.Entry entry : this.combatStates.entrySet()) {
+            sb.append(" - ").append(entry.getKey()).append(" | ").append(entry.getValue()).append(" turns remains\n");
+        }
         return sb.toString();
     }
 
@@ -118,5 +122,9 @@ public abstract class GameCharacter {
 
     public void addCombatState(Skill.CombatState state, int turns) {
         this.combatStates.put(state, turns);
+    }
+
+    public Map<Skill.CombatState, Integer> getCombatStates() {
+        return this.combatStates;
     }
 }

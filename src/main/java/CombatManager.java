@@ -35,7 +35,5 @@ public class CombatManager {
         } else {
             System.out.println("Not enough mana " + executorMana + " to execue skill " + skill);
         }
-
-
     }
 }
