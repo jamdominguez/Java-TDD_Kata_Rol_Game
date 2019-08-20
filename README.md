@@ -131,3 +131,6 @@ Into a rol game is necessary a combat system, for build this system take the nex
   - RQ9_bladeWithPoisonOverHeroOrEnemy
   - RQ9_dirtyKickBehavior
   - RQ9_dirtyKickOverHeroOrEnemy
+- RQ10
+  - RQ10_GameCharacterWithoutManaCantExecuteActionsWithMana
+  - RQ10_skillsProducesCombatStates
