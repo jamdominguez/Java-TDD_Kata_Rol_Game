@@ -1,7 +1,6 @@
 package Skills;
 
 public class BurnAll extends Skill{
-
     public BurnAll() {
         setManaNeeded(50);
         setCoolDown(4);
@@ -10,6 +9,6 @@ public class BurnAll extends Skill{
     }
 
     public int dealDamage(int power, int spellPower) {
-        return (int) (Math.random() * 3);
+        return (int) (Math.random() * spellPower * 3);
     }
 }

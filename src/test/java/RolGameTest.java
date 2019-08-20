@@ -366,11 +366,11 @@ public class RolGameTest {
     public void RQ9_enemiesHasMeleeAttackBasedInPower() {
         Enemy enemy = EnemyFactory.getEnemy(EnemyFactory.EnemyClass.ORC);
         int damage = enemy.useSkill(SkillFactory.SkillName.MELEE_ATTACK);
-        Assert.assertEquals(true , 0 <= damage && damage <= enemy.getPower());
+        Assert.assertEquals(true, 0 <= damage && damage <= enemy.getPower());
     }
 
     @Test
-    public void RQ9_brutalStrikeBehavior(){
+    public void RQ9_brutalStrikeBehavior() {
         Hero hero = HeroFactory.getHero(HeroFactory.HeroClass.WARRIOR);
         Skill skill = SkillFactory.getSkill(SkillFactory.SkillName.BRUTAL_STRIKE);
         int skillDamage = skill.dealDamage(hero.getPower(), hero.getSpellPower());
@@ -392,13 +392,13 @@ public class RolGameTest {
         System.out.println(orc);
         combatManager.executeAction(executor, targets, warrior.getSkills().get(SkillFactory.SkillName.BRUTAL_STRIKE));
         int orcArmorAfterSkill = orc.getArmor();
-        Assert.assertEquals(true, orcArmor > orcArmorAfterSkill);
+        Assert.assertEquals(true, orcArmor >= orcArmorAfterSkill); // the damage can be 0
         System.out.println(executor);
         System.out.println(orc);
     }
 
     @Test
-    public void RQ9_mutilateBehavior(){
+    public void RQ9_mutilateBehavior() {
         Hero hero = HeroFactory.getHero(HeroFactory.HeroClass.WARRIOR);
         Skill skill = SkillFactory.getSkill(SkillFactory.SkillName.MUTILATE);
         int skillDamage = skill.dealDamage(hero.getPower(), hero.getSpellPower());
@@ -410,7 +410,7 @@ public class RolGameTest {
     }
 
     @Test
-    public void RQ9_mutilateOverHeroOrEnemy(){
+    public void RQ9_mutilateOverHeroOrEnemy() {
         Hero warrior = (Warrior) HeroFactory.getHero(HeroFactory.HeroClass.WARRIOR);
         Orc orc = (Orc) EnemyFactory.getEnemy(EnemyFactory.EnemyClass.ORC);
         int orcArmor = orc.getArmor();
@@ -422,7 +422,7 @@ public class RolGameTest {
         System.out.println(orc);
         combatManager.executeAction(executor, targets, warrior.getSkills().get(SkillFactory.SkillName.MUTILATE));
         int orcArmorAfterSkill = orc.getArmor();
-        Assert.assertEquals(true, orcArmor > orcArmorAfterSkill);
+        Assert.assertEquals(true, orcArmor >= orcArmorAfterSkill); // the damage can be 0
         try {
             Assert.assertEquals(true, orc.getCombatState(Skill.CombatState.POWER_DOWN_50) == 2);
         } catch (CombatStateException e) {
@@ -440,6 +440,7 @@ public class RolGameTest {
         int maxExpected = hero.getSpellPower();
         Assert.assertEquals(true, 0 <= skillDamage && skillDamage <= maxExpected);
         Assert.assertEquals(0, skill.getCoolDown());
+        Assert.assertEquals(10, skill.getManaNeeded());
     }
 
     @Test
@@ -456,8 +457,39 @@ public class RolGameTest {
         System.out.println(orc);
         combatManager.executeAction(executor, targets, wizard.getSkills().get(SkillFactory.SkillName.LET_IT_GO));
         int orcSpellArmorAfterSkill = orc.getSpellArmor();
-        Assert.assertEquals(true, orcSpellArmor > orcSpellArmorAfterSkill);
+        Assert.assertEquals(true, orcSpellArmor >= orcSpellArmorAfterSkill); // the damage can be 0
         Assert.assertEquals(initMana - wizard.getSkills().get(SkillFactory.SkillName.LET_IT_GO).getManaNeeded(), executor.getMana());
+        System.out.println(executor);
+        System.out.println(orc);
+    }
+
+    @Test
+    public void RQ9_burnAllBehavior() {
+        Hero hero = HeroFactory.getHero(HeroFactory.HeroClass.WIZARD);
+        Skill skill = SkillFactory.getSkill(SkillFactory.SkillName.BURN_ALL);
+        int skillDamage = skill.dealDamage(hero.getPower(), hero.getSpellPower());
+        int maxExpected = hero.getSpellPower() * 3;
+        Assert.assertEquals(true, 0 <= skillDamage && skillDamage <= maxExpected);
+        Assert.assertEquals(4, skill.getCoolDown());
+        Assert.assertEquals(50, skill.getManaNeeded());
+    }
+
+    @Test
+    public void RQ9_burnAllOverHeroOrEnemy() {
+        Hero wizard = (Wizard) HeroFactory.getHero(HeroFactory.HeroClass.WIZARD);
+        Orc orc = (Orc) EnemyFactory.getEnemy(EnemyFactory.EnemyClass.ORC);
+        int orcSpellArmor = orc.getSpellArmor();
+        CombatManager combatManager = new CombatManager();
+        GameCharacter executor = wizard;
+        int initMana = executor.getMana();
+        List<GameCharacter> targets = new LinkedList<GameCharacter>();
+        targets.add(orc);
+        System.out.println(executor);
+        System.out.println(orc);
+        combatManager.executeAction(executor, targets, wizard.getSkills().get(SkillFactory.SkillName.BURN_ALL));
+        int orcSpellArmorAfterSkill = orc.getSpellArmor();
+        Assert.assertEquals(true, orcSpellArmor >= orcSpellArmorAfterSkill); // the damage can be 0
+        Assert.assertEquals(initMana - wizard.getSkills().get(SkillFactory.SkillName.BURN_ALL).getManaNeeded(), executor.getMana());
         System.out.println(executor);
         System.out.println(orc);
     }
