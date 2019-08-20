@@ -132,5 +132,11 @@ Into a rol game is necessary a combat system, for build this system take the nex
   - RQ9_dirtyKickBehavior
   - RQ9_dirtyKickOverHeroOrEnemy
 - RQ10
-  - RQ10_GameCharacterWithoutManaCantExecuteActionsWithMana
+  - RQ10_magicalDamageConsumeSpellArmor
+  - RQ10_ifTargetHasnSpellArmorAllDamageToThelife
+  - RQ10_gameCharacterWithoutManaCantExecuteActionsWithMana
   - RQ10_skillsProducesCombatStates
+- RQ11
+  - RQ11_physicDamageConsumeArmor
+  - RQ11_ifTargetHasntArmorAllDamageToTheLife
+  - RQ11_ifTargetLifeIfUnder0SetTo0AndSetDie
