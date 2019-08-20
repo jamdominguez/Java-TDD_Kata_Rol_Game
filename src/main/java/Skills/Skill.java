@@ -19,13 +19,15 @@ public abstract class Skill {
         return this.manaNeeded;
     }
 
-    public void setManaNeeded(int i){}
+    public void setManaNeeded(int manaNeeded){
+        this.manaNeeded = manaNeeded;
+    }
 
     public int getCoolDown() {
         return this.coolDown;
     }
 
-    public Map getCombatStates() {
+    public Map<CombatState, Integer> getCombatStates() {
         return this.combatStates;
     }
 

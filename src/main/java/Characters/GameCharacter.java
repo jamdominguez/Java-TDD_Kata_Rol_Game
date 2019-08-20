@@ -2,6 +2,7 @@ package Characters;
 
 import Skills.Skill;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public abstract class GameCharacter {
@@ -100,7 +101,7 @@ public abstract class GameCharacter {
 
     private void updateMagicalDamage(int damage) {
         if (this.getSpellArmor() > 0) {
-            this.setSpellArmor(this.getSpellPower() - damage); // first remove spellarmor
+            this.setSpellArmor(this.getSpellArmor() - damage); // first remove spellarmor
             if (this.getSpellArmor() < 0) { // more damage than armor
                 this.setLife(this.getLife() + this.getSpellArmor()); // recalculate the life
                 this.setSpellArmor(0); // armor can't be negative, set to 0
@@ -110,7 +111,12 @@ public abstract class GameCharacter {
         }
     }
 
-    public int getCombatState(Skill.CombatState state){
-        return this.combatStates.get(state);
+    public int getCombatState(Skill.CombatState state) throws CombatStateException {
+        if (this.combatStates.containsKey(state)) return this.combatStates.get(state);
+        else throw new CombatStateException();
+    }
+
+    public void addCombatState(Skill.CombatState state, int turns) {
+        this.combatStates.put(state, turns);
     }
 }

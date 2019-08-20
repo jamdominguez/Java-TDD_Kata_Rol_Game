@@ -22,6 +22,7 @@ public class Orc extends Enemy {
         this.skills.put(SkillFactory.SkillName.MELEE_ATTACK, SkillFactory.getSkill(SkillFactory.SkillName.MELEE_ATTACK));
         this.skills.put(SkillFactory.SkillName.BLADE_WITH_POISON, SkillFactory.getSkill(SkillFactory.SkillName.BLADE_WITH_POISON));
         this.skills.put(SkillFactory.SkillName.DIRTY_KICK, SkillFactory.getSkill(SkillFactory.SkillName.DIRTY_KICK));
+        this.combatStates = new HashMap<Skill.CombatState, Integer>();
     }
 
     public String getDescription() {

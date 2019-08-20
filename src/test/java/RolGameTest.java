@@ -1,3 +1,4 @@
+import Characters.CombatStateException;
 import Characters.Enemies.Enemy;
 import Characters.Enemies.EnemyFactory;
 import Characters.Enemies.Orc;
@@ -309,21 +310,22 @@ public class RolGameTest {
     public void RQ9_combatState_PowerDown() {
         Skill skill = SkillFactory.getSkill(SkillFactory.SkillName.MELEE_ATTACK);
         skill.addCombatState(Skill.CombatState.POWER_DOWN_50, 2);
-        Assert.assertEquals(2, skill.getCombatStates().get(Skill.CombatState.POWER_DOWN_50));
+        Assert.assertEquals(Integer.valueOf(2), skill.getCombatStates().get(Skill.CombatState.POWER_DOWN_50));
     }
 
     @Test
     public void RQ9_combatState_DamageInTime() {
         Skill skill = SkillFactory.getSkill(SkillFactory.SkillName.MELEE_ATTACK);
         skill.addCombatState(Skill.CombatState.DAMAGE_IN_TIME_10, 2);
-        Assert.assertEquals(2, skill.getCombatStates().get(Skill.CombatState.DAMAGE_IN_TIME_10));
+        Map<Skill.CombatState, Integer> states = skill.getCombatStates();
+        Assert.assertEquals(Integer.valueOf(2), states.get(Skill.CombatState.DAMAGE_IN_TIME_10));
     }
 
     @Test
     public void RQ9_combatState_Poisoned() {
         Skill skill = SkillFactory.getSkill(SkillFactory.SkillName.MELEE_ATTACK);
         skill.addCombatState(Skill.CombatState.POISONED_5, 2);
-        Assert.assertEquals(2, skill.getCombatStates().get(Skill.CombatState.POISONED_5));
+        Assert.assertEquals(Integer.valueOf(2), skill.getCombatStates().get(Skill.CombatState.POISONED_5));
     }
 
     @Test
@@ -386,11 +388,13 @@ public class RolGameTest {
         GameCharacter executor = warrior;
         List<GameCharacter> targets = new LinkedList<GameCharacter>();
         targets.add(orc);
+        System.out.println(executor);
+        System.out.println(orc);
         combatManager.executeAction(executor, targets, warrior.getSkills().get(SkillFactory.SkillName.BRUTAL_STRIKE));
         int orcArmorAfterSkill = orc.getArmor();
-        System.out.println("Orc armor " + orcArmor);
-        System.out.println("Orc armor after skill " + orcArmorAfterSkill);
         Assert.assertEquals(true, orcArmor > orcArmorAfterSkill);
+        System.out.println(executor);
+        System.out.println(orc);
     }
 
     @Test
@@ -402,7 +406,7 @@ public class RolGameTest {
         Assert.assertEquals(true, 0 <= skillDamage && skillDamage <= maxExpected);
         Assert.assertEquals(4, skill.getCoolDown());
         Assert.assertEquals(true, skill.getCombatStates().containsKey(Skill.CombatState.POWER_DOWN_50));
-        Assert.assertEquals(2, skill.getCombatStates().get(Skill.CombatState.POWER_DOWN_50));
+        Assert.assertEquals(Integer.valueOf(2), skill.getCombatStates().get(Skill.CombatState.POWER_DOWN_50));
     }
 
     @Test
@@ -414,11 +418,47 @@ public class RolGameTest {
         GameCharacter executor = warrior;
         List<GameCharacter> targets = new LinkedList<GameCharacter>();
         targets.add(orc);
+        System.out.println(executor);
+        System.out.println(orc);
         combatManager.executeAction(executor, targets, warrior.getSkills().get(SkillFactory.SkillName.MUTILATE));
         int orcArmorAfterSkill = orc.getArmor();
-        System.out.println("Orc armor " + orcArmor);
-        System.out.println("Orc armor after skill " + orcArmorAfterSkill);
         Assert.assertEquals(true, orcArmor > orcArmorAfterSkill);
-        //Assert.assertEquals(true, orc.getCombatState(Skill.CombatState.POWER_DOWN_50));
+        try {
+            Assert.assertEquals(true, orc.getCombatState(Skill.CombatState.POWER_DOWN_50) == 2);
+        } catch (CombatStateException e) {
+            System.out.println("The target hasn't the combat state");
+        }
+        System.out.println(executor);
+        System.out.println(orc);
+    }
+
+    @Test
+    public void RQ9_letItGoBehavior() {
+        Hero hero = HeroFactory.getHero(HeroFactory.HeroClass.WIZARD);
+        Skill skill = SkillFactory.getSkill(SkillFactory.SkillName.LET_IT_GO);
+        int skillDamage = skill.dealDamage(hero.getPower(), hero.getSpellPower());
+        int maxExpected = hero.getSpellPower();
+        Assert.assertEquals(true, 0 <= skillDamage && skillDamage <= maxExpected);
+        Assert.assertEquals(0, skill.getCoolDown());
+    }
+
+    @Test
+    public void RQ9_letItGoOverHeroOrEnemy() {
+        Hero wizard = (Wizard) HeroFactory.getHero(HeroFactory.HeroClass.WIZARD);
+        Orc orc = (Orc) EnemyFactory.getEnemy(EnemyFactory.EnemyClass.ORC);
+        int orcSpellArmor = orc.getSpellArmor();
+        CombatManager combatManager = new CombatManager();
+        GameCharacter executor = wizard;
+        int initMana = executor.getMana();
+        List<GameCharacter> targets = new LinkedList<GameCharacter>();
+        targets.add(orc);
+        System.out.println(executor);
+        System.out.println(orc);
+        combatManager.executeAction(executor, targets, wizard.getSkills().get(SkillFactory.SkillName.LET_IT_GO));
+        int orcSpellArmorAfterSkill = orc.getSpellArmor();
+        Assert.assertEquals(true, orcSpellArmor > orcSpellArmorAfterSkill);
+        Assert.assertEquals(initMana - wizard.getSkills().get(SkillFactory.SkillName.LET_IT_GO).getManaNeeded(), executor.getMana());
+        System.out.println(executor);
+        System.out.println(orc);
     }
 }
