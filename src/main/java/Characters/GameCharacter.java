@@ -1,6 +1,7 @@
 package Characters;
 
 import Skills.Skill;
+import Skills.SkillFactory;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -135,4 +136,6 @@ public abstract class GameCharacter {
     public boolean isAlive() {
         return this.life > 0;
     }
+
+    public abstract Map<SkillFactory.SkillName, Skill> getSkills();
 }

@@ -6,6 +6,7 @@ public class BurnAll extends Skill{
         setCoolDown(4);
         addCombatState(CombatState.DAMAGE_IN_TIME_10, 2);
         setDamageType(DamageType.MAGICAL);
+        setSkillName(SkillFactory.SkillName.BURN_ALL);
     }
 
     public int dealDamage(int power, int spellPower) {

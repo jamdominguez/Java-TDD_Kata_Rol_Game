@@ -3,26 +3,15 @@ import Characters.Enemies.EnemyFactory;
 import Characters.Heroes.Hero;
 import Characters.Heroes.HeroFactory;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class RolGame {
 
     public enum State {COMBAT, NO_COMBAT}
     private State state;
     private CombatManager combatManager;
-    private static Map<HeroFactory.HeroClass, Hero> heroes;
-    private static Map<EnemyFactory.EnemyClass, Enemy> enemies;
     private Player player;
-
-    static {
-        heroes = new HashMap<HeroFactory.HeroClass, Hero>();
-        heroes.put(HeroFactory.HeroClass.WARRIOR, HeroFactory.getHero(HeroFactory.HeroClass.WARRIOR));
-        heroes.put(HeroFactory.HeroClass.WIZARD, HeroFactory.getHero(HeroFactory.HeroClass.WIZARD));
-        enemies = new HashMap<EnemyFactory.EnemyClass, Enemy>();
-        enemies.put(EnemyFactory.EnemyClass.ORC, EnemyFactory.getEnemy(EnemyFactory.EnemyClass.ORC));
-    }
+    private Map<EnemyFactory.EnemyClass, Enemy> enemiesInGame;
 
     public CombatManager getCombatManager() {
         return this.combatManager;
@@ -31,26 +20,27 @@ public class RolGame {
     public RolGame() {
         this.state = State.NO_COMBAT;
         this.combatManager = new CombatManager();
+        this.enemiesInGame = new HashMap<EnemyFactory.EnemyClass, Enemy>();
     }
 
     public State getState() {
         return state;
     }
 
-    public static Map<HeroFactory.HeroClass, Hero> getHeroes() {
-        return heroes;
+    public static HeroFactory.HeroClass[] getHeroesToSelect() {
+        return HeroFactory.HeroClass.values();
     }
 
     public static Hero getHero(HeroFactory.HeroClass heroClass) {
-        return heroes.get(heroClass);
+        return HeroFactory.getHero(heroClass);
     }
 
-    public static Map getEnemies() {
-        return enemies;
+    public static EnemyFactory.EnemyClass[] getEnemiesToSelect() {
+        return EnemyFactory.EnemyClass.values();
     }
 
     public static Enemy getEnemy(EnemyFactory.EnemyClass enemyClass) {
-        return enemies.get(enemyClass);
+        return EnemyFactory.getEnemy(enemyClass);
     }
 
     public Player getPlayer() {
@@ -76,5 +66,22 @@ public class RolGame {
 
     public void endCombat() {
         this.state = State.NO_COMBAT;
+    }
+
+    public void setRandomEnemies(int enemiesNumber) {
+        int number = (int) (Math.random() * enemiesNumber + 1);
+        for (int i = 0; i < number; i++){
+            int randomEnemyIndex = (int) (Math.random() * EnemyFactory.EnemyClass.values().length);
+            Enemy enemy = EnemyFactory.getEnemy(EnemyFactory.EnemyClass.values()[randomEnemyIndex]);
+            this.enemiesInGame.put(enemy.getEnemyClass(), enemy);
+        }
+    }
+
+    public Map<EnemyFactory.EnemyClass, Enemy> getEnemiesInGame() {
+        return enemiesInGame;
+    }
+
+    public void setEnemiesInGame(Map<EnemyFactory.EnemyClass, Enemy> enemiesInGame) {
+        this.enemiesInGame = enemiesInGame;
     }
 }

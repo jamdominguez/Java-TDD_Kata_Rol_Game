@@ -8,6 +8,7 @@ public abstract class Skill {
     protected Map<CombatState, Integer> combatStates;
     protected int coolDown;
     protected int manaNeeded;
+    protected SkillFactory.SkillName skillName;
 
     protected DamageType damageType;
 
@@ -49,5 +50,13 @@ public abstract class Skill {
 
     public DamageType getDamageType() {
         return damageType;
+    }
+
+    public SkillFactory.SkillName getSkillName() {
+        return skillName;
+    }
+
+    public void setSkillName(SkillFactory.SkillName skillName) {
+        this.skillName = skillName;
     }
 }

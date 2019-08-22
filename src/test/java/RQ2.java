@@ -6,7 +6,7 @@ import org.junit.Test;
 public class RQ2 {
     @Test
     public void RQ2_twoHeroesToChose() {
-        Assert.assertEquals(2, RolGame.getHeroes().size());
+        Assert.assertEquals(2, RolGame.getHeroesToSelect().length);
     }
 
     @Test

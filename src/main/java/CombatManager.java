@@ -1,5 +1,6 @@
 import Characters.GameCharacter;
 import Skills.Skill;
+import Skills.SkillFactory;
 
 import java.util.List;
 import java.util.Map;
@@ -35,5 +36,19 @@ public class CombatManager {
         } else {
             System.out.println("Not enough mana " + executorMana + " to execue skill " + skill);
         }
+    }
+
+    public SkillFactory.SkillName executeActionIA(GameCharacter executor, List<GameCharacter> targets) {
+        // Get executor skills
+        Map<SkillFactory.SkillName, Skill> skills = executor.getSkills();
+        // Get a random number
+        int randomIndex = (int) (Math.random() * skills.size());
+        // Get a skill name into the executor skills
+        SkillFactory.SkillName skillName = (SkillFactory.SkillName) skills.keySet().toArray()[randomIndex];
+        // Get a skill into the executor skills
+        Skill skill = skills.get(skillName);
+        // Execute action with these skill
+        executeAction(executor, targets, skill);
+        return skillName;
     }
 }

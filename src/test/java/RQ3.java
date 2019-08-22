@@ -6,7 +6,7 @@ import org.junit.Test;
 public class RQ3 {
     @Test
     public void RQ3_oneEnemyInGame() {
-        Assert.assertEquals(1, RolGame.getEnemies().size());
+        Assert.assertEquals(1, RolGame.getEnemiesToSelect().length);
     }
 
     @Test
