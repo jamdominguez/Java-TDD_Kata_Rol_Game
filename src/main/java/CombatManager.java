@@ -51,4 +51,17 @@ public class CombatManager {
         executeAction(executor, targets, skill);
         return skillName;
     }
+
+    public int getMaxHeroesByCombat() {
+        return 1;
+    }
+
+    public int getMaxEnemiesByCombat() {
+        return 1;
+    }
+
+    public int[] getMaxCharactersIncCombatBySide() {
+        int[] characters = {getMaxHeroesByCombat(), getMaxEnemiesByCombat()};
+        return characters;
+    }
 }

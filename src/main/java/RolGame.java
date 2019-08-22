@@ -84,4 +84,15 @@ public class RolGame {
     public void setEnemiesInGame(Map<EnemyFactory.EnemyClass, Enemy> enemiesInGame) {
         this.enemiesInGame = enemiesInGame;
     }
+
+    public boolean isGameOver() {
+        return getPlayer().getHeroes().get(0).getLife() == 0;
+    }
+
+    public boolean isGameWon() {
+        for (Map.Entry<EnemyFactory.EnemyClass, Enemy> entry : enemiesInGame.entrySet()) {
+            if (entry.getValue().getLife() != 0) return false;
+        }
+        return true;
+    }
 }
