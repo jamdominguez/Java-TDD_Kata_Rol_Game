@@ -51,7 +51,7 @@ Into a rol game is necessary a combat system, for build this system take the nex
         * bladeWithPoison = random(power) with 3 turns of CD. This habilities produce the enemy is poisoned for 2 turns with 5% damage produces by the hability
         * dirtyKick = random(power) with 5 turns of CD. This habilities produce the enemy power down a 20% for 2 turns
 		
- * RQ10. Some habilities consumes mana like was defined, other produce special states in the heroes or enemy. When the character hasn't mana, can't use theses habilities
+ * RQ12. Some habilities consumes mana like was defined, other produce special states in the heroes or enemy. When the character hasn't mana, can't use theses habilities
  * RQ11. When a physic attack produce damage first consume the character enemy armor. When the armor is consumed, it is not taken into account for the next turns
  * RQ12. When a magic attack produce damage first consume the spellarmor enemy armor. When the spellarmor is consumed, it is not taken into account for the next turns
  * RQ13. The player choose the hero hability to fight
@@ -132,11 +132,13 @@ Into a rol game is necessary a combat system, for build this system take the nex
   - RQ9_dirtyKickBehavior
   - RQ9_dirtyKickOverHeroOrEnemy
 - RQ10
-  - RQ10_magicalDamageConsumeSpellArmor
-  - RQ10_ifTargetHasnSpellArmorAllDamageToThelife
   - RQ10_gameCharacterWithoutManaCantExecuteActionsWithMana
   - RQ10_skillsProducesCombatStates
 - RQ11
   - RQ11_physicDamageConsumeArmor
   - RQ11_ifTargetHasntArmorAllDamageToTheLife
   - RQ11_ifTargetLifeIfUnder0SetTo0AndSetDie
+- RQ12
+  - RQ12_magicalDamageConsumeSpellArmor
+  - RQ12_ifTargetHasnSpellArmorAllDamageToThelife
+  - RQ12_ifTargetLifeIfUnder0SetTo0AndSetDie
