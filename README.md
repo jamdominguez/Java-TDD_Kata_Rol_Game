@@ -149,8 +149,8 @@ Into a rol game is necessary a combat system, for build this system take the nex
   - RQ14_enemiesUseRandomSkillsInCombat
 - RQ15
   - RQ15_inGameAlwaysCombat1v1
-  - RQ15_ifHeroDieCombatEnd_PlayerLoseCombat
-  - RQ15_ifHeroEnemyCombatEnd_PlayerWinCombat  
+  - RQ15_ifHeroDie_GameIsOver
+  - RQ15_ifAllEnemiesDie_GameIsWon  
 - RQ16
   - RQ16_combatStartInfoMustBeShown
 - RQ17
