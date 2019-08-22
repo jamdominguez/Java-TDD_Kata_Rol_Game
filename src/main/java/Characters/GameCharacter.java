@@ -131,4 +131,8 @@ public abstract class GameCharacter {
     public Map<Skill.CombatState, Integer> getCombatStates() {
         return this.combatStates;
     }
+
+    public boolean isAlive() {
+        return this.life > 0;
+    }
 }
