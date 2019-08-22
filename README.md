@@ -142,3 +142,26 @@ Into a rol game is necessary a combat system, for build this system take the nex
   - RQ12_magicalDamageConsumeSpellArmor
   - RQ12_ifTargetHasnSpellArmorAllDamageToThelife
   - RQ12_ifTargetLifeIfUnder0SetTo0AndSetDie
+- RQ13
+  - RQ13_whenGameStartThePlayeChooseAHero
+  - RQ13_thePlayerCanUseSkillsOutCombat
+  - RQ13_thePlayerCanUseSkillsInCombat
+- RQ14
+  - RQ14_randomEnemiesInTheGame
+  - RQ14_enemiesUseRandomSkillsInCombat
+- RQ15
+  - RQ15_inGameAlwaysCombat1v1
+  - RQ15_ifHeroDieCombatEnd_PlayerLoseCombat
+  - RQ15_ifHeroEnemyCombatEnd_PlayerWinCombat  
+- RQ16
+  - RQ16_combatStartInfoMustBeShown
+- RQ17
+  - RQ17_combatEndtInfoMustBeShown
+- RQ18
+  - RQ18_statesInfoMustBeShown
+- RQ19
+  - RQ19_theHeroLifeNeverCanBeNegative
+- RQ20
+  - RQ20_theGameFinishWhenHeroDie_GameOver
+  - RQ20_theGameHasServeralEnemiesByGame
+  - RQ20_whenAllEnemiesAreDefeat_GameCompleted
