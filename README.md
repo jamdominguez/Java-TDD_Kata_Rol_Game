@@ -144,10 +144,8 @@ Into a rol game is necessary a combat system, for build this system take the nex
   - RQ12_ifTargetLifeIfUnder0SetTo0AndSetDie
 - RQ13
   - RQ13_whenGameStartThePlayeChooseAHero
-  - RQ13_thePlayerCanUseSkillsOutCombat
-  - RQ13_thePlayerCanUseSkillsInCombat
 - RQ14
-  - RQ14_randomEnemiesInTheGame
+  - RQ14_randomEnemiesInTheGame_1To5
   - RQ14_enemiesUseRandomSkillsInCombat
 - RQ15
   - RQ15_inGameAlwaysCombat1v1
