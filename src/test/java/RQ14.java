@@ -1,5 +1,4 @@
 import Characters.Enemies.Enemy;
-import Characters.Enemies.EnemyFactory;
 import Characters.GameCharacter;
 import Characters.Heroes.Hero;
 import Characters.Heroes.HeroFactory;
@@ -25,7 +24,7 @@ public class RQ14 {
         rolGame.addPlayer("Player_1");
         rolGame.getPlayer().select(HeroFactory.HeroClass.WARRIOR);
         rolGame.setRandomEnemies(10);
-        Enemy enemy = rolGame.getEnemiesInGame().get(EnemyFactory.EnemyClass.ORC);
+        Enemy enemy = (Enemy) rolGame.getEnemiesInGame().get(0);
         Hero hero = rolGame.getPlayer().getHeroes().get(0);
         List<GameCharacter> targets = new LinkedList<GameCharacter>();
         targets.add(hero);

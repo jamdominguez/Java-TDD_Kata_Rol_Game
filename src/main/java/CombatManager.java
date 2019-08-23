@@ -7,6 +7,7 @@ import java.util.Map;
 
 public class CombatManager {
     private int turn;
+    private String lastInfo;
 
     public int getTurn() {
         return this.turn;
@@ -17,15 +18,17 @@ public class CombatManager {
     }
 
     public void start() {
+        this.lastInfo = "Combat Start";
         this.turn = 0;
     }
 
     public void executeAction(GameCharacter executor, List<GameCharacter> targets, Skill skill) {
         int executorMana = executor.getMana();
+        String msg;
         if (executorMana >= skill.getManaNeeded()) {
             executor.setMana(executorMana - skill.getManaNeeded());
             int damage = skill.dealDamage(executor.getPower(), executor.getSpellPower());
-            //System.out.println("Execution action damage " + damage + " from " + executor.getDescription() + " with " + skill+ " and " + skill.getManaNeeded() + " mana needed\n");
+            msg = "Execution action damage " + damage + " from " + executor.getDescription() + " with " + skill+ " and " + skill.getManaNeeded() + " mana needed";
             Map<Skill.CombatState, Integer> skillStates = skill.getCombatStates();
             for (GameCharacter target : targets) {
                 target.dealDamage(damage, skill.getDamageType());
@@ -34,8 +37,11 @@ public class CombatManager {
                 }
             }
         } else {
-            System.out.println("Not enough mana " + executorMana + " to execue skill " + skill);
+            msg = "Not enough mana " + executorMana + " to execue skill " + skill;
+            System.out.println(msg);
         }
+        this.lastInfo = msg;
+        this.turn++;
     }
 
     public SkillFactory.SkillName executeActionIA(GameCharacter executor, List<GameCharacter> targets) {
@@ -63,5 +69,13 @@ public class CombatManager {
     public int[] getMaxCharactersIncCombatBySide() {
         int[] characters = {getMaxHeroesByCombat(), getMaxEnemiesByCombat()};
         return characters;
+    }
+
+    public String getLastInfo() {
+        return this.lastInfo;
+    }
+
+    public void end() {
+        this.lastInfo = "Combat End";
     }
 }

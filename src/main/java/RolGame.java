@@ -7,11 +7,12 @@ import java.util.*;
 
 public class RolGame {
 
+    public enum Level {EASY, MEDIUM, HARD}
     public enum State {COMBAT, NO_COMBAT}
     private State state;
     private CombatManager combatManager;
     private Player player;
-    private Map<EnemyFactory.EnemyClass, Enemy> enemiesInGame;
+    private LinkedList<Enemy> enemiesInGame;
 
     public CombatManager getCombatManager() {
         return this.combatManager;
@@ -20,7 +21,7 @@ public class RolGame {
     public RolGame() {
         this.state = State.NO_COMBAT;
         this.combatManager = new CombatManager();
-        this.enemiesInGame = new HashMap<EnemyFactory.EnemyClass, Enemy>();
+        this.enemiesInGame = new LinkedList<Enemy>();
     }
 
     public State getState() {
@@ -69,19 +70,20 @@ public class RolGame {
     }
 
     public void setRandomEnemies(int enemiesNumber) {
-        int number = (int) (Math.random() * enemiesNumber + 1);
-        for (int i = 0; i < number; i++){
-            int randomEnemyIndex = (int) (Math.random() * EnemyFactory.EnemyClass.values().length);
+        this.enemiesInGame = new LinkedList<Enemy>();
+        int enemiesTypeInFactory = EnemyFactory.EnemyClass.values().length;
+        for (int i = 0; i < enemiesNumber; i++){
+            int randomEnemyIndex = (int) (Math.random() * enemiesTypeInFactory);
             Enemy enemy = EnemyFactory.getEnemy(EnemyFactory.EnemyClass.values()[randomEnemyIndex]);
-            this.enemiesInGame.put(enemy.getEnemyClass(), enemy);
+            this.enemiesInGame.add(enemy);
         }
     }
 
-    public Map<EnemyFactory.EnemyClass, Enemy> getEnemiesInGame() {
-        return enemiesInGame;
+    public LinkedList getEnemiesInGame() {
+        return this.enemiesInGame;
     }
 
-    public void setEnemiesInGame(Map<EnemyFactory.EnemyClass, Enemy> enemiesInGame) {
+    public void setEnemiesInGame(LinkedList<Enemy> enemiesInGame) {
         this.enemiesInGame = enemiesInGame;
     }
 
@@ -90,9 +92,23 @@ public class RolGame {
     }
 
     public boolean isGameWon() {
-        for (Map.Entry<EnemyFactory.EnemyClass, Enemy> entry : enemiesInGame.entrySet()) {
-            if (entry.getValue().getLife() != 0) return false;
+        for (Enemy enemy : this.enemiesInGame) {
+            if (enemy.getLife() != 0) return false;
         }
         return true;
+    }
+
+    public void start(Level level) {
+        switch (level){
+            case EASY:
+                setRandomEnemies(1);
+                break;
+            case MEDIUM:
+                setRandomEnemies(3);
+                break;
+            case HARD:
+                setRandomEnemies(5);
+                break;
+        }
     }
 }

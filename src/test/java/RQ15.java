@@ -1,5 +1,4 @@
 import Characters.Enemies.Enemy;
-import Characters.Enemies.EnemyFactory;
 import Characters.Heroes.HeroFactory;
 import org.junit.Assert;
 import org.junit.Test;
@@ -29,7 +28,7 @@ public class RQ15 {
         rolGame.addPlayer("Player_1");
         rolGame.getPlayer().select(HeroFactory.HeroClass.WARRIOR);
         rolGame.setRandomEnemies(1);
-        Enemy enemy = rolGame.getEnemiesInGame().get(EnemyFactory.EnemyClass.ORC);
+        Enemy enemy = (Enemy) rolGame.getEnemiesInGame().get(0);
         enemy.setLife(0);
         Assert.assertEquals(false, rolGame.isGameOver());
         Assert.assertEquals(true, rolGame.isGameWon());

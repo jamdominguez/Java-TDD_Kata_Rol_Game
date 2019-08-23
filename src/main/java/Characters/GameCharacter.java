@@ -94,6 +94,7 @@ public abstract class GameCharacter {
     public void dealDamage(int damage, Skill.DamageType damageType) {
         if (Skill.DamageType.PHYSICAL == damageType) updatePhysicalDamage(damage);
         else if (Skill.DamageType.MAGICAL == damageType) updateMagicalDamage(damage);
+        if (getLife() < 0) setLife(0);
     }
 
     private void updatePhysicalDamage(int damage) {
