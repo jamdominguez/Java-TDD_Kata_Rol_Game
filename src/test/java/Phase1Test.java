@@ -14,7 +14,10 @@ import org.junit.runners.Suite;
         RQ9.class,
         RQ10.class,
         RQ11.class,
-        RQ12.class
+        RQ12.class,
+        RQ13.class,
+        RQ14.class,
+        RQ15.class
 })
 
 public class Phase1Test {}
