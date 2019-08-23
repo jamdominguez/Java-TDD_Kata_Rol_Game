@@ -159,7 +159,8 @@ Into a rol game is necessary a combat system, for build this system take the nex
   - RQ18_statesInfoMustBeShown
 - RQ19
   - RQ19_theHeroLifeNeverCanBeNegative
-- RQ20
-  - RQ20_theGameFinishWhenHeroDie_GameOver
-  - RQ20_theGameHasServeralEnemiesByGame
-  - RQ20_whenAllEnemiesAreDefeat_GameCompleted
+- RQ20  
+  - RQ20_theGameHasSeveralEnemiesByGameAccordingLevel
+  - RQ20_easyGameHas_1Enemy
+  - RQ20_mediumGameHas_3Enemy  
+  - RQ20_hardGameHas_5Enemy
