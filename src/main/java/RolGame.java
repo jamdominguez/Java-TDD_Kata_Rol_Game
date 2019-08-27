@@ -20,8 +20,11 @@ public class RolGame {
 
     public RolGame() {
         this.state = State.NO_COMBAT;
-        this.combatManager = new CombatManager();
         this.enemiesInGame = new LinkedList<Enemy>();
+    }
+
+    public void setCombatManager(CombatManager combatManager){
+        this.combatManager = combatManager;
     }
 
     public State getState() {

@@ -129,10 +129,15 @@ public class RQ9 {
         Hero warrior = (Warrior) HeroFactory.getHero(HeroFactory.HeroClass.WARRIOR);
         Orc orc = (Orc) EnemyFactory.getEnemy(EnemyFactory.EnemyClass.ORC);
         int orcArmor = orc.getArmor();
-        CombatManager combatManager = new CombatManager();
         GameCharacter executor = warrior;
         List<GameCharacter> targets = new LinkedList<GameCharacter>();
         targets.add(orc);
+        // Combat Manager
+        List<GameCharacter> characters = new LinkedList<GameCharacter>();
+        characters.add(warrior);
+        characters.add(orc);
+        CombatManager combatManager = new CombatManager(characters);
+        //
         combatManager.executeAction(executor, targets, warrior.getSkills().get(SkillFactory.SkillName.BRUTAL_STRIKE));
         int orcArmorAfterSkill = orc.getArmor();
         Assert.assertEquals(true, orcArmor >= orcArmorAfterSkill); // the damage can be 0
@@ -155,10 +160,15 @@ public class RQ9 {
         Hero warrior = (Warrior) HeroFactory.getHero(HeroFactory.HeroClass.WARRIOR);
         Orc orc = (Orc) EnemyFactory.getEnemy(EnemyFactory.EnemyClass.ORC);
         int orcArmor = orc.getArmor();
-        CombatManager combatManager = new CombatManager();
         GameCharacter executor = warrior;
         List<GameCharacter> targets = new LinkedList<GameCharacter>();
         targets.add(orc);
+        // Combat Manager
+        List<GameCharacter> characters = new LinkedList<GameCharacter>();
+        characters.add(warrior);
+        characters.add(orc);
+        CombatManager combatManager = new CombatManager(characters);
+        //
         combatManager.executeAction(executor, targets, warrior.getSkills().get(SkillFactory.SkillName.MUTILATE));
         int orcArmorAfterSkill = orc.getArmor();
         Assert.assertEquals(true, orcArmor >= orcArmorAfterSkill); // the damage can be 0
@@ -181,11 +191,16 @@ public class RQ9 {
         Hero wizard = (Wizard) HeroFactory.getHero(HeroFactory.HeroClass.WIZARD);
         Orc orc = (Orc) EnemyFactory.getEnemy(EnemyFactory.EnemyClass.ORC);
         int orcSpellArmor = orc.getSpellArmor();
-        CombatManager combatManager = new CombatManager();
         GameCharacter executor = wizard;
         int initMana = executor.getMana();
         List<GameCharacter> targets = new LinkedList<GameCharacter>();
         targets.add(orc);
+        // Combat Manager
+        List<GameCharacter> characters = new LinkedList<GameCharacter>();
+        characters.add(wizard);
+        characters.add(orc);
+        CombatManager combatManager = new CombatManager(characters);
+        //
         combatManager.executeAction(executor, targets, wizard.getSkills().get(SkillFactory.SkillName.LET_IT_GO));
         int orcSpellArmorAfterSkill = orc.getSpellArmor();
         Assert.assertEquals(true, orcSpellArmor >= orcSpellArmorAfterSkill); // the damage can be 0
@@ -208,11 +223,16 @@ public class RQ9 {
         Hero wizard = (Wizard) HeroFactory.getHero(HeroFactory.HeroClass.WIZARD);
         Orc orc = (Orc) EnemyFactory.getEnemy(EnemyFactory.EnemyClass.ORC);
         int orcSpellArmor = orc.getSpellArmor();
-        CombatManager combatManager = new CombatManager();
         GameCharacter executor = wizard;
         int initMana = executor.getMana();
         List<GameCharacter> targets = new LinkedList<GameCharacter>();
         targets.add(orc);
+        // Combat Manager
+        List<GameCharacter> characters = new LinkedList<GameCharacter>();
+        characters.add(wizard);
+        characters.add(orc);
+        CombatManager combatManager = new CombatManager(characters);
+        //
         combatManager.executeAction(executor, targets, wizard.getSkills().get(SkillFactory.SkillName.BURN_ALL));
         int orcSpellArmorAfterSkill = orc.getSpellArmor();
         Assert.assertEquals(true, orcSpellArmor >= orcSpellArmorAfterSkill); // the damage can be 0
@@ -238,12 +258,18 @@ public class RQ9 {
         Orc orc = (Orc) EnemyFactory.getEnemy(EnemyFactory.EnemyClass.ORC);
         int wizardArmor = wizard.getArmor();
         int warriorArmor = warrior.getArmor();
-        CombatManager combatManager = new CombatManager();
         GameCharacter executor = orc;
         int initMana = executor.getMana();
         List<GameCharacter> targets = new LinkedList<GameCharacter>();
         targets.add(wizard);
         targets.add(warrior);
+        // Combat Manager
+        List<GameCharacter> characters = new LinkedList<GameCharacter>();
+        characters.add(wizard);
+        characters.add(warrior);
+        characters.add(orc);
+        CombatManager combatManager = new CombatManager(characters);
+        //
         combatManager.executeAction(executor, targets, orc.getSkills().get(SkillFactory.SkillName.BLADE_WITH_POISON));
         int wizardArmorAfterSkill = wizard.getArmor();
         int warriorArmorAfterSkill = warrior.getArmor();
@@ -272,12 +298,18 @@ public class RQ9 {
         Orc orc = (Orc) EnemyFactory.getEnemy(EnemyFactory.EnemyClass.ORC);
         int wizardArmor = wizard.getArmor();
         int warriorArmor = warrior.getArmor();
-        CombatManager combatManager = new CombatManager();
         GameCharacter executor = orc;
         int initMana = executor.getMana();
         List<GameCharacter> targets = new LinkedList<GameCharacter>();
         targets.add(wizard);
         targets.add(warrior);
+        // Combat Manager
+        List<GameCharacter> characters = new LinkedList<GameCharacter>();
+        characters.add(wizard);
+        characters.add(warrior);
+        characters.add(orc);
+        CombatManager combatManager = new CombatManager(characters);
+        //
         combatManager.executeAction(executor, targets, orc.getSkills().get(SkillFactory.SkillName.DIRTY_KICK));
         int wizardArmorAfterSkill = wizard.getArmor();
         int warriorArmorAfterSkill = warrior.getArmor();

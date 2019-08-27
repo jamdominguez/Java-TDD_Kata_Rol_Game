@@ -1,4 +1,5 @@
 import Characters.Enemies.Enemy;
+import Characters.Enemies.Orc;
 import Characters.GameCharacter;
 import Characters.Heroes.Hero;
 import Characters.Heroes.HeroFactory;
@@ -28,6 +29,16 @@ public class RQ14 {
         Hero hero = rolGame.getPlayer().getHeroes().get(0);
         List<GameCharacter> targets = new LinkedList<GameCharacter>();
         targets.add(hero);
+        List enemies = new LinkedList();
+        Enemy orc1 = new Orc();
+        enemies.add(orc1);
+        // Combat Manager
+        List<GameCharacter> characters = new LinkedList<GameCharacter>();
+        characters.add(hero);
+        characters.add(orc1);
+        CombatManager combatManager = new CombatManager(characters);
+        //
+        rolGame.setCombatManager(combatManager);
         for (int i = 0; i < 10; i++){
             SkillFactory.SkillName skillName = rolGame.getCombatManager().executeActionIA(enemy, targets);
             System.out.println(skillName);
