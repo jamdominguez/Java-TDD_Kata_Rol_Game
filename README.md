@@ -142,6 +142,9 @@ Into a rol game is necessary a combat system, for build this system take the nex
   - RQ12_magicalDamageConsumeSpellArmor
   - RQ12_ifTargetHasnSpellArmorAllDamageToThelife
   - RQ12_ifTargetLifeIfUnder0SetTo0AndSetDie
+  - RQ12_skillInCDCantBeUsed
+  - RQ12_skillAfterCDFinishCanBeUsed
+  - RQ12_sillsProducesBehaviourInTime
 - RQ13
   - RQ13_whenGameStartThePlayeChooseAHero
 - RQ14
